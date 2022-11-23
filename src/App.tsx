@@ -1,13 +1,35 @@
-import Logo from "@/assets/logo.png";
-import HelloWorld from "@/components/HelloWorld/HelloWorld";
+import "./App.css";
 
-import styles from "./App.module.css";
+import React from "react";
 
-export default function App() {
+import Index from "./components/Layout";
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
+import ErrorPage from "@/pages/error-page";
+import User from "@/pages/user";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Index />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "user",
+    element: <User />,
+  },
+]);
+
+
+function App() {
   return (
-    <main className={styles.main}>
-      <img className={styles.logo} alt="React logo" width="400px" src={Logo} />
-      <HelloWorld msg="Hello React + TypeScript + Vite" />
-    </main>
+    <RouterProvider router={router}>
+    </RouterProvider>
   );
 }
+
+export default App;
