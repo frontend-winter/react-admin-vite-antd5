@@ -1,0 +1,112 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended", // Eslint recommended configuration by eslint.
+    "plugin:import/recommended", // Linting of ES2015+ import/export syntax.
+    "plugin:react/recommended", // Recommended react linting configs.
+    "plugin:react-hooks/recommended", // Recommended react hooks linting configs.
+    "plugin:jsx-a11y/recommended", // Turns on a11y rules for JSX.
+    "plugin:@typescript-eslint/recommended", // Turns on rules from TypeScript-specific plugin.
+    "plugin:prettier/recommended" // Turns off all rules that are unnecessary or might conflict with Prettier.
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "@typescript-eslint",
+    "import",
+    "simple-import-sort" // Plugin for sorting imports in file.
+  ],
+  "rules": {
+    "import/first": "warn",
+    "import/newline-after-import": "warn",
+    "import/no-duplicates": "error",
+    "import/no-named-as-default-member": "off",
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "ignoreCase": true,
+        "reservedFirst": true,
+        "noSortAlphabetically": true
+      }
+    ]
+  },
+  "env": {
+    "es6": true, // enable ES2015 features.
+    "browser": true, // enable use of global browser variables like `windows`.
+    "node": true // enable use of global node variables like `process`.
+  },
+  "parser": "@typescript-eslint/parser", // Allows Eslint to understand TypeScript syntax.
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json", // Specify where to find the root tsconfig file of your project.
+    "ecmaVersion": 2021, // ECMAScript version supported in the project.
+    "sourceType": "module", // set to `module` because we ue ECMAScript modules.
+    "ecmaFeatures": {
+      "jsx": true // enable jsx for React.
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // auto-detect React version from package.json.
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"] // use typescript-eslint parser for .ts|tsx files.
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.eslint.json",
+        "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`.
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["./src/**/*.spec.ts?(x)"],
+      "extends": [
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "plugin:jest-dom/recommended",
+        "plugin:testing-library/react"
+      ],
+      "plugins": ["jest", "jest-dom", "testing-library"],
+      "rules": {
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/valid-expect": "error",
+        "jest-dom/prefer-checked": "error",
+        "jest-dom/prefer-enabled-disabled": "error",
+        "jest-dom/prefer-required": "error",
+        "jest-dom/prefer-to-have-attribute": "error",
+        "testing-library/await-async-query": "error",
+        "testing-library/no-await-sync-query": "error",
+        "testing-library/no-debugging-utils": "warn",
+        "testing-library/no-dom-import": "off"
+      },
+      "env": {
+        "jest/globals": true // enable Jest global variables.
+      }
+    },
+    {
+      "files": ["./cypress/**/*.cy.ts"],
+      "extends": ["plugin:cypress/recommended"],
+      "plugins": ["cypress"],
+      "rules": {
+        "cypress/no-force": "warn",
+        "cypress/assertion-before-screenshot": "warn",
+        "cypress/require-data-selectors": "warn",
+        "cypress/no-pause": "error"
+      },
+      "env": {
+        "cypress/globals": true // enable Cypress global variables.
+      }
+    }
+  ]
+}
