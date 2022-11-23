@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "author": {
     "name": "frontend-winter",
-    "url": "https://github.com/fabien-ml"
+    "url": "https://github.com/frontend-winter/react-admin-vite-antd5"
   },
   "scripts": {
     "build": "npm run typecheck && vite build",
