@@ -1,0 +1,32 @@
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  overflow: hidden;
+  white-space:nowrap;
+  div{
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+  }
+}
+@keyframes move {
+  from{
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.content {
+  background-color: #fff !important;
+}
+.header {
+  background-color: #fff !important;
+  display: flex;
+  justify-content: space-between;
+}

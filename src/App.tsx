@@ -1,35 +1,9 @@
-import "./App.css";
-
+import "./App.scss";
 import React from "react";
-
-import Index from "./components/Layout";
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-} from "react-router-dom";
-import ErrorPage from "@/pages/error-page";
-import User from "@/pages/user";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Index />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "user",
-    element: <User />,
-  },
-]);
-
+import { RouterProvider } from "react-router-dom";
+import { router } from "@/routes";
 
 function App() {
-  return (
-    <RouterProvider router={router}>
-    </RouterProvider>
-  );
+  return <RouterProvider router={router} />;
 }
-
 export default App;
