@@ -17,12 +17,9 @@ const Layout: React.FC = () => {
 
   useLocationListen(location => {
     const { pathname } = location;
-    let temp = pathname.split("/");
-    setDefaultSelectedKeys([temp.at(-1) ?? ""]);
-    let temp2 = temp.slice(1, temp.length - 1);
-    if (temp2.length) {
-      setDefaultOpenKeys(temp2);
-    }
+    let temp = pathname.split("/").filter(item => item);
+    setDefaultSelectedKeys([temp.join("/")]);
+    setDefaultOpenKeys([temp[0]]);
   });
 
   useEffect(() => {
@@ -34,7 +31,7 @@ const Layout: React.FC = () => {
         collapsed={collapsed}
         onCollapse={value => setCollapsed(value)}
         defaultOpenKeys={defaultOpenKeys}
-        selectedKeys={defaultSelectedKeys}
+        defaultSelectedKeys={defaultSelectedKeys}
       />
       <LayoutAntd>
         <Header />

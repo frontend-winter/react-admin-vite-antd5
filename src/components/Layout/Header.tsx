@@ -1,8 +1,8 @@
 import { Avatar, Dropdown, Layout as LayoutAntd, Space } from "antd";
-import styles from "@/components/Layout/index.module.scss";
+import styles from "./index.module.scss";
 import { BellOutlined, DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { removeStorage } from "@/common/utils/storage";
 import { TOKEN } from "@/common/utils/contans";
 

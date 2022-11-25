@@ -1,4 +1,8 @@
-import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
+import {
+  DesktopOutlined,
+  PieChartOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import React from "react";
 import { Layout as LayoutAntd, Menu, MenuProps } from "antd";
 import { Logo } from "@/components/Layout/Logo";
@@ -13,41 +17,43 @@ function getItem(
   children?: MenuItem[]
 ): MenuItem {
   return {
+    label: Array.isArray(children) ? label : <Link to={key}>{label}</Link>,
     key,
     icon,
     children,
-    label: <Link to={key}>{label}</Link>
   } as MenuItem;
 }
 
 const items: MenuItem[] = [
-  getItem("dashboard", "dashboard", <PieChartOutlined />),
-  getItem("user", "user", <DesktopOutlined />)
-  // getItem("User", "sub1", <UserOutlined />, [
-  //   getItem("Tom", "3"),
-  //   getItem("Bill", "4"),
-  //   getItem("Alex", "5")
-  // ]),
-  // getItem("Team", "sub2", <TeamOutlined />, [
-  //   getItem("Team 1", "6"),
-  //   getItem("Team 2", "8")
-  // ]),
-  // getItem("Files", "9", <FileOutlined />)
+  getItem("Dashboard", "dashboard", <PieChartOutlined />),
+  getItem("User", "user", <DesktopOutlined />),
+  getItem("System Management", "systemManagement", <UserOutlined />, [
+    getItem("User Management", "systemManagement/userManagement"),
+    getItem("Role Management", "systemManagement/roleManagement"),
+  ]),
 ];
 
-export function Slider(props: { collapsed: boolean, onCollapse: (value: boolean) => void, defaultOpenKeys: string[], selectedKeys: string[] }) {
-  return <LayoutAntd.Sider
-    collapsible
-    collapsed={props.collapsed}
-    onCollapse={props.onCollapse}
-  >
-    <Logo collapsed={props.collapsed} />
-    <Menu
-      theme="dark"
-      mode="inline"
-      items={items}
-      defaultOpenKeys={props.defaultOpenKeys}
-      selectedKeys={props.selectedKeys}
-    />
-  </LayoutAntd.Sider>;
+export function Slider(props: {
+  collapsed: boolean;
+  onCollapse: (value: boolean) => void;
+  defaultOpenKeys: string[];
+  defaultSelectedKeys: string[];
+}) {
+  return (
+    <LayoutAntd.Sider
+      collapsible
+      collapsed={props.collapsed}
+      onCollapse={props.onCollapse}
+      width={240}
+    >
+      <Logo collapsed={props.collapsed} />
+      <Menu
+        theme="dark"
+        mode="inline"
+        items={items}
+        defaultOpenKeys={props.defaultOpenKeys}
+        defaultSelectedKeys={props.defaultSelectedKeys}
+      />
+    </LayoutAntd.Sider>
+  );
 }

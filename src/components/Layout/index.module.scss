@@ -12,15 +12,6 @@
     color: #fff;
   }
 }
-@keyframes move {
-  from{
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 
 .content {
   background-color: #fff !important;
@@ -29,4 +20,9 @@
   background-color: #fff !important;
   display: flex;
   justify-content: space-between;
+}
+
+.breadcrumb{
+  padding: 15px 0px;
+  //border: 1px solid #000;
 }

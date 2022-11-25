@@ -4,6 +4,8 @@ import ErrorPage from "@/pages/error-page";
 import Dashboard from "@/pages/dashboard";
 import User from "@/pages/user";
 import Login from "@/pages/login";
+import RoleManagement from "@/pages/systemManagement/roleManagement";
+import UserManagement from "@/pages/systemManagement/userManagement";
 
 export const router = createBrowserRouter([
   {
@@ -23,10 +25,25 @@ export const router = createBrowserRouter([
         path: "user",
         element: <User />,
       },
+      {
+        path: "systemManagement",
+        element: <RoleManagement />,
+        // loader: () => redirect("roleManagement"),
+        children: [
+          {
+            path: "roleManagement",
+            element: <RoleManagement />,
+          },
+          {
+            path: "userManagement",
+            element: <UserManagement />,
+          },
+        ],
+      },
     ],
   },
   {
     path: "login",
     element: <Login />,
-  }
+  },
 ]);
