@@ -1,7 +1,7 @@
 import React from "react";
 
-function userManagement() {
+function UserManagement() {
   return <div>RoleManagement</div>;
 }
 
-export default userManagement;
+export default UserManagement;
