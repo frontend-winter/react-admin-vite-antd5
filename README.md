@@ -19,13 +19,13 @@ This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang
 1. Create the project.
 
    ```bash
-   npx degit fabien-ml/react-admin-vite-antd5 my-app
+   git clone https://github.com/frontend-winter/react-admin-vite-antd5
    ```
 
 2. Access the project directory.
 
    ```bash
-   cd my-app
+   cd react-admin-vite-antd5
    ```
 
 3. Initialize a git repository.
@@ -40,7 +40,7 @@ This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang
    npm install
    ```
 
-5. Start dev server with hot reload at http://localhost:3000.
+5. Start dev server with hot reload at http://localhost:5793.
    ```bash
    npm run dev
    ```

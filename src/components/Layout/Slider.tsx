@@ -52,6 +52,7 @@ export function Slider(props: {
         mode="inline"
         items={items}
         defaultOpenKeys={props.defaultOpenKeys}
+        selectedKeys={props.defaultOpenKeys}
         defaultSelectedKeys={props.defaultSelectedKeys}
       />
     </LayoutAntd.Sider>
