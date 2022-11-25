@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { IUserInitialState } from "@/store/reducers/user";
 import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
 import { setMenu } from "@/store/actions";
-
+import { MenuItem } from "./layout";
 const Layout: React.FC = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [defaultOpenKeys, setDefaultOpenKeys] = useState<string[]>([]);
@@ -28,7 +28,10 @@ const Layout: React.FC = () => {
 
   useEffect(() => {
     if (!user.token) return navigator("/login");
-    const data = {
+    const data: {
+      menu1: MenuItem[];
+      menu2: MenuItem[];
+    } = {
       menu1: [
         {
           label: "User",

@@ -38,7 +38,7 @@ export default function (
     case actionTypes.menu: {
       return {
         ...state,
-        ...menu,
+        menu: [...menu],
       };
     }
     default: {

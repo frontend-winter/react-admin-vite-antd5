@@ -24,7 +24,7 @@ export function setUserToken(token: string) {
   };
 }
 
-export function setMenu(menu: any[]) {
+export function setMenu(menu: MenuItem) {
   return {
     type: actionTypes.menu,
     menu,
