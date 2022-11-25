@@ -2,10 +2,21 @@ import { actionTypes } from "@/store/actions";
 import { getStorage, setStorage } from "@/common/utils/storage";
 import { TOKEN } from "@/common/utils/contans";
 
+export interface IUserInitialState {
+  role: string[];
+  token: string;
+  menu: string[];
+  [key: string]: any;
+}
+
+export interface Type {
+  type: string;
+}
 // 默认状态
-const initialState = {
+const initialState: IUserInitialState = {
   role: [],
   token: getStorage(TOKEN) ?? "",
+  menu: [],
 };
 /**
  * user
@@ -14,16 +25,24 @@ const initialState = {
  */
 export default function (
   state = initialState,
-  { type, token }: { type: string; token: string }
+  { type, token, menu }: IUserInitialState & Type
 ) {
   switch (type) {
-    case actionTypes.userToken:
+    case actionTypes.userToken: {
       setStorage(TOKEN, token, 3000);
       return {
         ...state,
         token,
       };
-    default:
+    }
+    case actionTypes.menu: {
+      return {
+        ...state,
+        ...menu,
+      };
+    }
+    default: {
       return state;
+    }
   }
 }

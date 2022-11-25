@@ -7,6 +7,8 @@ import React from "react";
 import { Layout as LayoutAntd, Menu, MenuProps } from "antd";
 import { Logo } from "@/components/Layout/Logo";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { IUserInitialState } from "@/store/reducers/user";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -24,21 +26,23 @@ function getItem(
   } as MenuItem;
 }
 
-const items: MenuItem[] = [
-  getItem("Dashboard", "dashboard", <PieChartOutlined />),
-  getItem("User", "user", <DesktopOutlined />),
-  getItem("System Management", "systemManagement", <UserOutlined />, [
-    getItem("User Management", "systemManagement/userManagement"),
-    getItem("Role Management", "systemManagement/roleManagement"),
-  ]),
-];
-
 export function Slider(props: {
+  routers: string[];
   collapsed: boolean;
   onCollapse: (value: boolean) => void;
   defaultOpenKeys: string[];
   defaultSelectedKeys: string[];
 }) {
+  console.log(props.routers, "routers");
+  const items: MenuItem[] = [
+    getItem("Dashboard", "dashboard", <PieChartOutlined />),
+    getItem("User", "user", <DesktopOutlined />),
+    getItem("System Management", "systemManagement", <UserOutlined />, [
+      getItem("User Management", "systemManagement/userManagement"),
+      getItem("Role Management", "systemManagement/roleManagement"),
+    ]),
+  ];
+
   return (
     <LayoutAntd.Sider
       collapsible
@@ -52,7 +56,7 @@ export function Slider(props: {
         mode="inline"
         items={items}
         defaultOpenKeys={props.defaultOpenKeys}
-        selectedKeys={props.defaultOpenKeys}
+        // selectedKeys={props.defaultOpenKeys}
         defaultSelectedKeys={props.defaultSelectedKeys}
       />
     </LayoutAntd.Sider>

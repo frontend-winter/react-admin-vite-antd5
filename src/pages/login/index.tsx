@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
 
@@ -6,13 +6,20 @@ import styles from "./index.module.scss";
 import { useDispatch } from "react-redux";
 import { setUserToken } from "@/store/actions";
 import { useNavigate } from "react-router-dom";
+import { sleep } from "@/common/utils/common";
 const Login: React.FC = () => {
   const dispatch = useDispatch();
   const navigator = useNavigate();
-  const onFinish = (values: any) => {
-    // console.log("Received values of form: ", values);
-    dispatch(setUserToken(JSON.stringify(values)));
-    navigator("/");
+  const [loading, setLoading] = useState<boolean>(false);
+  const onFinish = async (values: any) => {
+    try {
+      setLoading(true);
+      await sleep(1000);
+      dispatch(setUserToken(JSON.stringify(values)));
+      navigator("/");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const [form] = Form.useForm();
@@ -62,6 +69,7 @@ const Login: React.FC = () => {
             htmlType="submit"
             className="login-form-button"
             block
+            loading={loading}
           >
             Log in
           </Button>
