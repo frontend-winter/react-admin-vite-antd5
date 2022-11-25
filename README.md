@@ -64,7 +64,7 @@ npm run lint
 npm run build
 ```
 
-### Run the app in production mode at http://localhost:3000.
+### Run the app in production mode at http://localhost:5793.
 
 ```bash
 npm run serve
