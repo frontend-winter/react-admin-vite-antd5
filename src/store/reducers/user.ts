@@ -1,11 +1,12 @@
 import { actionTypes } from "@/store/actions";
 import { getStorage, setStorage } from "@/common/utils/storage";
 import { TOKEN } from "@/common/utils/contans";
+import { MenuItem } from "@/components/Layout/layout";
 
 export interface IUserInitialState {
   role: string[];
   token: string;
-  menu: string[];
+  menu: MenuItem[];
   [key: string]: any;
 }
 
@@ -29,7 +30,6 @@ export default function (
 ) {
   switch (type) {
     case actionTypes.userToken: {
-      setStorage(TOKEN, token, 3000);
       return {
         ...state,
         token,

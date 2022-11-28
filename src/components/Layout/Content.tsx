@@ -8,17 +8,11 @@ export function Content() {
   const extraBreadcrumbItems = pathSnippets.map((_, index) => {
     const url = `${pathSnippets.slice(0, index + 1).join("/")}`;
     return (
-      <Breadcrumb.Item key={url}>
+      <Breadcrumb.Item>
         <Link to={url}>{[url]}</Link>
       </Breadcrumb.Item>
     );
   });
-
-  // const breadcrumbItems = [
-  //   <Breadcrumb.Item key="home">
-  //     <Link to="/">Home</Link>
-  //   </Breadcrumb.Item>,
-  // ].concat(extraBreadcrumbItems);
 
   return (
     <LayoutAntd.Content style={{ margin: "0 16px" }}>
@@ -30,10 +24,7 @@ export function Content() {
         className={styles.content}
         style={{ padding: 24, minHeight: 360 }}
       >
-        <KeepAlive
-          include={["/center/sys/user", "/center/sys/role"]}
-          keys={[]}
-        />
+        <KeepAlive include={[]} keys={[]} />
       </div>
     </LayoutAntd.Content>
   );

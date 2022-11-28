@@ -10,6 +10,19 @@
     font-size: 16px;
     font-weight: bold;
     color: #fff;
+    transition: all .3s;
+  }
+
+  .visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+  }
+
+  .hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
   }
 }
 

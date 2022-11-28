@@ -11,10 +11,12 @@ import { IUserInitialState } from "@/store/reducers/user";
 import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
 import { setMenu } from "@/store/actions";
 import { MenuItem } from "./layout";
+import { baseRouterList } from "@/routes";
+import { ADMIN } from "@/common/utils/contans";
 const Layout: React.FC = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
-  const [defaultOpenKeys, setDefaultOpenKeys] = useState<string[]>([]);
-  const [defaultSelectedKeys, setDefaultSelectedKeys] = useState<string[]>([]);
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+  const [openKeys, setOpenKeys] = useState<string[]>([""]);
   const { user } = useSelector(state => state) as { user: IUserInitialState };
   const navigator = useNavigate();
   const dispatch = useDispatch();
@@ -22,8 +24,7 @@ const Layout: React.FC = () => {
   useLocationListen(location => {
     const { pathname } = location;
     let temp = pathname.split("/").filter(item => item);
-    setDefaultSelectedKeys([temp.join("/")]);
-    setDefaultOpenKeys([temp[0]]);
+    setSelectedKeys([temp.join("/")]);
   });
 
   useEffect(() => {
@@ -41,6 +42,12 @@ const Layout: React.FC = () => {
         },
       ],
       menu2: [
+        {
+          label: "User",
+          key: "user",
+          icon: <DesktopOutlined />,
+          path: "pages/user",
+        },
         {
           label: "System Management",
           key: "systemManagement",
@@ -60,10 +67,11 @@ const Layout: React.FC = () => {
         },
       ],
     };
-    if ((user.token as unknown as { username: string })?.username === "admin") {
-      dispatch(setMenu(data.menu2));
+    // console.log(user.token, "user.token");
+    if ((user.token as unknown as { username: string })?.username === ADMIN) {
+      dispatch(setMenu([...baseRouterList, ...data.menu2]));
     } else {
-      dispatch(setMenu(data.menu1));
+      dispatch(setMenu([...baseRouterList, ...data.menu1]));
     }
   }, []);
 
@@ -73,8 +81,9 @@ const Layout: React.FC = () => {
         routers={user.menu}
         collapsed={collapsed}
         onCollapse={value => setCollapsed(value)}
-        defaultOpenKeys={defaultOpenKeys}
-        defaultSelectedKeys={defaultSelectedKeys}
+        selectedKeys={selectedKeys}
+        openKeys={openKeys}
+        setOpenKeys={setOpenKeys}
       />
       <LayoutAntd>
         <Header />

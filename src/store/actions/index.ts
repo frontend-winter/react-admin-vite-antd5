@@ -1,3 +1,5 @@
+import { MenuItem } from "@/components/Layout/layout";
+
 export const actionTypes = {
   //设置学生查询结果数组和总数
   setStudentsAndTotal: "setStudentsAndTotal",
@@ -24,7 +26,7 @@ export function setUserToken(token: string) {
   };
 }
 
-export function setMenu(menu: MenuItem) {
+export function setMenu(menu: MenuItem[]) {
   return {
     type: actionTypes.menu,
     menu,

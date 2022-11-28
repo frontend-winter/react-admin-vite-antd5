@@ -1,29 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
 
 import styles from "./index.module.scss";
-import { useDispatch } from "react-redux";
-import { setUserToken } from "@/store/actions";
 import { useNavigate } from "react-router-dom";
-import { sleep } from "@/common/utils/common";
+import { AuthContext } from "@/AuthProvider";
 const Login: React.FC = () => {
-  const dispatch = useDispatch();
+  const authContext = useContext(AuthContext);
   const navigator = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
   const onFinish = async (values: any) => {
     try {
       setLoading(true);
-      await sleep(1000);
-      dispatch(setUserToken(JSON.stringify(values)));
+      const token = JSON.stringify(values);
+      await authContext.signIn(token);
       navigator("/");
     } finally {
       setLoading(false);
     }
   };
-
   const [form] = Form.useForm();
-
   return (
     <div id={styles.loginContainer}>
       <Form

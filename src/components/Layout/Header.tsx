@@ -1,21 +1,21 @@
-import { Avatar, Dropdown, Layout as LayoutAntd, Space } from "antd";
+import { Avatar, Badge, Dropdown, Layout as LayoutAntd, Space } from "antd";
 import styles from "./index.module.scss";
 import { BellOutlined, DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { useNavigate } from "react-router-dom";
-import { removeStorage } from "@/common/utils/storage";
-import { TOKEN } from "@/common/utils/contans";
+import { AuthContext } from "@/AuthProvider";
+import { useContext } from "react";
 
 export function Header() {
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
   const items: MenuProps["items"] = [
     {
       key: "1",
       label: "Sign out",
-      onClick: () => {
+      onClick: async () => {
+        await authContext.signOut();
         navigate("/login");
-        removeStorage(TOKEN);
-        // return redirect('/login')
       },
     },
   ];
@@ -24,8 +24,10 @@ export function Header() {
     <LayoutAntd.Header className={styles.header}>
       <div />
       <div>
-        <Space>
-          <BellOutlined style={{ fontSize: 20 }} />
+        <Space size={"large"}>
+          <Badge count={5}>
+            <BellOutlined style={{ fontSize: 20 }} />
+          </Badge>
           <Dropdown menu={{ items }}>
             <a onClick={e => e.preventDefault()}>
               <Space>

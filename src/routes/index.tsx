@@ -6,6 +6,24 @@ import User from "@/pages/user";
 import Login from "@/pages/login";
 import RoleManagement from "@/pages/systemManagement/roleManagement";
 import UserManagement from "@/pages/systemManagement/userManagement";
+import LayoutRouter from "@/components/OutletLayoutRouter";
+import React from "react";
+import { DashboardOutlined } from "@ant-design/icons";
+
+export const baseRouter = [
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+  },
+];
+
+export const baseRouterList = [
+  {
+    label: "Dashboard",
+    key: "dashboard",
+    icon: <DashboardOutlined />,
+  },
+];
 
 export const router = createBrowserRouter([
   {
@@ -14,23 +32,20 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        index: true,
         loader: () => redirect("/dashboard"),
       },
-      {
-        path: "dashboard",
-        element: <Dashboard />,
-      },
+      ...baseRouter,
       {
         path: "user",
         element: <User />,
       },
       {
         path: "systemManagement",
-        element: <RoleManagement />,
-        // loader: () => redirect("roleManagement"),
+        element: <LayoutRouter />,
         children: [
           {
+            index: true,
             path: "roleManagement",
             element: <RoleManagement />,
           },

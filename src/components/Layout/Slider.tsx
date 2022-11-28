@@ -22,32 +22,22 @@ export function Slider(props: {
   routers: MenuItem[];
   collapsed: boolean;
   onCollapse: (value: boolean) => void;
-  defaultOpenKeys: string[];
-  defaultSelectedKeys: string[];
+  selectedKeys: string[];
+  openKeys: string[];
+  setOpenKeys: (value: string[]) => void;
 }) {
-  // const items: MenuItemAntd[] = [
-  //   getItem("Dashboard", "dashboard", <PieChartOutlined />),
-  //   getItem("User", "user", <DesktopOutlined />),
-  //   getItem("System Management", "systemManagement", <UserOutlined />, [
-  //     getItem("User Management", "systemManagement/userManagement"),
-  //     getItem("Role Management", "systemManagement/roleManagement"),
-  //   ]),
-  // ];
-
+  // @ts-ignore
   function deepTree(list: MenuItem[]) {
-    list.map((item: MenuItem) => {
+    return list.map((item: MenuItem) => {
       if (item?.children) {
-        console.log(deepTree(item.children));
         item.children = deepTree(item.children);
       }
-      return getItem(item.label, item.key, item.icon);
+      return getItem(item.label, item.key, item.icon, item?.children);
     });
-    return list;
   }
-
   const items: MenuItem[] = deepTree(props.routers);
 
-  console.log(items);
+  // console.log(items, "items");
 
   return (
     <LayoutAntd.Sider
@@ -61,9 +51,10 @@ export function Slider(props: {
         theme="dark"
         mode="inline"
         items={items}
-        defaultOpenKeys={props.defaultOpenKeys}
-        // selectedKeys={props.defaultOpenKeys}
-        defaultSelectedKeys={props.defaultSelectedKeys}
+        selectedKeys={props.selectedKeys}
+        onClick={e => props.setOpenKeys([e.key])}
+        // openKeys={props.openKeys}
+        defaultOpenKeys={props.openKeys}
       />
     </LayoutAntd.Sider>
   );

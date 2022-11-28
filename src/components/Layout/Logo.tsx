@@ -6,9 +6,9 @@ export function Logo(props: { collapsed: boolean }) {
     <div className={styles.logo}>
       <Link to={"/"}>
         {props.collapsed ? (
-          <div className="show">admin</div>
+          <div className={styles.visible}>admin</div>
         ) : (
-          <div className={"hidden"}>react-admin-vite-antd5</div>
+          <div className={styles.visible}>react-admin-vite-antd5</div>
         )}
       </Link>
     </div>
