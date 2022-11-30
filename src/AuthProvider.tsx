@@ -12,7 +12,7 @@ interface AuthContextType {
 
 export let AuthContext = React.createContext<AuthContextType>(null!);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch();
   let signIn = (values: string) => {
     return new Promise(async (resolve, reject) => {
@@ -39,4 +39,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
   let value = { signIn, signOut };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
+};
+
+export default AuthProvider;

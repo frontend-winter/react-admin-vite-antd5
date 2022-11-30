@@ -1,5 +1,5 @@
 import { actionTypes } from "@/store/actions";
-import { getStorage, setStorage } from "@/common/utils/storage";
+import { getStorage } from "@/common/utils/storage";
 import { TOKEN } from "@/common/utils/contans";
 import { MenuItem } from "@/components/Layout/layout";
 
@@ -38,7 +38,7 @@ export default function (
     case actionTypes.menu: {
       return {
         ...state,
-        menu: [...menu],
+        menu: menu,
       };
     }
     default: {

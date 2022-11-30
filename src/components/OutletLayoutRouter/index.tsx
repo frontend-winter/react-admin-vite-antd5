@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-function LayoutRouter() {
+function OutletLayoutRouter() {
   return (
     <div>
       <Outlet />
@@ -8,4 +8,4 @@ function LayoutRouter() {
   );
 }
 
-export default LayoutRouter;
+export default OutletLayoutRouter;

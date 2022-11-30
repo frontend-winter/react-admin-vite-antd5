@@ -5,6 +5,8 @@ import type { MenuProps } from "antd";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "@/AuthProvider";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { IUserInitialState } from "@/store/reducers/user";
 
 export function Header() {
   const navigate = useNavigate();
@@ -20,6 +22,8 @@ export function Header() {
     },
   ];
 
+  const { user } = useSelector(state => state) as { user: IUserInitialState };
+
   return (
     <LayoutAntd.Header className={styles.header}>
       <div />
@@ -31,6 +35,7 @@ export function Header() {
           <Dropdown menu={{ items }}>
             <a onClick={e => e.preventDefault()}>
               <Space>
+                {(user.token as unknown as { username: string })?.username}
                 <Avatar src="https://joeschmoe.io/api/v1/random" />
                 <DownOutlined />
               </Space>

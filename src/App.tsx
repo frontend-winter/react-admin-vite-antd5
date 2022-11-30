@@ -1,30 +1,92 @@
 import "./App.scss";
-import React, { useEffect, useState } from "react";
+import { defaultRoutes, filepathToElement } from "./routes";
+import { useRoutes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { IUserInitialState } from "@/store/reducers/user";
+import AuthProvider from "./AuthProvider";
+import { MenuItem } from "@/components/Layout/layout";
 import {
-  createBrowserRouter,
-  redirect,
-  RouterProvider,
-} from "react-router-dom";
-import { baseRouter, router } from "@/routes";
-import { AuthProvider } from "@/AuthProvider";
-import Layout from "@/components/Layout";
-import ErrorPage from "@/pages/error-page";
-import User from "@/pages/user";
-import LayoutRouter from "@/components/OutletLayoutRouter";
-import RoleManagement from "@/pages/systemManagement/roleManagement";
-import UserManagement from "@/pages/systemManagement/userManagement";
-import Login from "@/pages/login";
+  DesktopOutlined,
+  TableOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { ADMIN } from "@/common/utils/contans";
+import { setMenu } from "@/store/actions";
+import { cloneDeep } from "lodash";
 
 function App() {
-  const [routerList, setRouterList] = useState(router);
-
+  const dispatch = useDispatch();
+  const {
+    user: { token, menu },
+  } = useSelector(state => state) as { user: IUserInitialState };
+  const cloneDefaultRoutes = cloneDeep(defaultRoutes);
+  cloneDefaultRoutes[0].children = [
+    ...filepathToElement(menu),
+    ...cloneDefaultRoutes[0].children,
+  ];
+  console.log(cloneDefaultRoutes, "cloneDefaultRoutes");
+  const element = useRoutes(cloneDefaultRoutes);
   useEffect(() => {
-    return () => {};
-  }, []);
-  return (
-    <AuthProvider>
-      <RouterProvider router={routerList} />;
-    </AuthProvider>
-  );
+    const data: {
+      user: MenuItem[];
+      admin: MenuItem[];
+    } = {
+      user: [
+        {
+          label: "User",
+          key: "user",
+          path: "/user",
+          icon: <DesktopOutlined />,
+          filepath: "pages/user/index.tsx",
+        },
+      ],
+      admin: [
+        {
+          label: "User",
+          key: "user",
+          path: "user",
+          icon: <DesktopOutlined />,
+          filepath: "pages/user/index.tsx",
+        },
+        {
+          label: "List Page",
+          key: "list-page",
+          path: "list-page",
+          icon: <TableOutlined />,
+          filepath: "pages/list-page/index.tsx",
+        },
+        {
+          label: "System Management",
+          key: "systemManagement",
+          path: "systemManagement",
+          icon: <UserOutlined />,
+          filepath: "components/OutletLayoutRouter/index.tsx",
+          children: [
+            {
+              label: "User Management",
+              key: "userManagement",
+              path: "userManagement",
+              filepath: "pages/systemManagement/userManagement/index.tsx",
+            },
+            {
+              label: "Role Management",
+              key: "roleManagement",
+              path: "roleManagement",
+              filepath: "pages/systemManagement/roleManagement/index.tsx",
+            },
+          ],
+        },
+      ],
+    };
+    if ((token as unknown as { username: string })?.username === ADMIN) {
+      dispatch(setMenu([...data.admin]));
+    } else {
+      dispatch(setMenu([...data.user]));
+    }
+  }, [token]);
+
+  return <AuthProvider>{element}</AuthProvider>;
 }
+
 export default App;
