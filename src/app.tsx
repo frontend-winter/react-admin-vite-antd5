@@ -4,19 +4,59 @@ import { useRoutes } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IUserInitialState } from "@/store/reducers/user";
-import AuthProvider from "./AuthProvider";
 import { MenuItem } from "@/components/Layout/layout";
 import {
   DesktopOutlined,
   TableOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { ADMIN } from "@/common/utils/contans";
-import { setMenu } from "@/store/actions";
+import { ADMIN, TOKEN } from "@/common/utils/contans";
+import { setMenu, setUserToken } from "@/store/actions";
 import { cloneDeep } from "lodash";
+import { sleep } from "@/common/utils/common";
+import { getStorage, removeStorage, setStorage } from "@/common/utils/storage";
+
+interface AuthContextType {
+  signIn: (user: string) => Promise<any>;
+  signOut: () => Promise<any>;
+}
+
+export let AuthContext = React.createContext<AuthContextType>({
+  signIn(user: string): Promise<any> {
+    return Promise.resolve(user);
+  },
+  signOut(): Promise<any> {
+    return Promise.resolve();
+  },
+});
 
 function App() {
   const dispatch = useDispatch();
+
+  let signIn = (values: string) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        await sleep(1000);
+        setStorage(TOKEN, values, 3000);
+        dispatch(setUserToken(getStorage(TOKEN)));
+        resolve({});
+      } catch {
+        reject();
+      }
+    });
+  };
+
+  let signOut = () => {
+    return new Promise(async resolve => {
+      try {
+        removeStorage(TOKEN);
+        dispatch(setUserToken(""));
+      } finally {
+        resolve({});
+      }
+    });
+  };
+
   const {
     user: { token, menu },
   } = useSelector(state => state) as { user: IUserInitialState };
@@ -25,7 +65,7 @@ function App() {
     ...filepathToElement(menu),
     ...cloneDefaultRoutes[0].children,
   ];
-  console.log(cloneDefaultRoutes, "cloneDefaultRoutes");
+  // console.log(cloneDefaultRoutes, "cloneDefaultRoutes");
   const element = useRoutes(cloneDefaultRoutes);
   useEffect(() => {
     const data: {
@@ -79,6 +119,7 @@ function App() {
         },
       ],
     };
+    // console.log(token, "token");
     if ((token as unknown as { username: string })?.username === ADMIN) {
       dispatch(setMenu([...data.admin]));
     } else {
@@ -86,7 +127,11 @@ function App() {
     }
   }, [token]);
 
-  return <AuthProvider>{element}</AuthProvider>;
+  return (
+    <AuthContext.Provider value={{ signIn, signOut }}>
+      {element}
+    </AuthContext.Provider>
+  );
 }
 
 export default App;

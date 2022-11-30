@@ -3,10 +3,10 @@ import styles from "./index.module.scss";
 import { BellOutlined, DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "@/AuthProvider";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { IUserInitialState } from "@/store/reducers/user";
+import { AuthContext } from "@/app";
 
 export function Header() {
   const navigate = useNavigate();

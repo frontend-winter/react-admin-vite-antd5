@@ -24,10 +24,10 @@ const initialState: IUserInitialState = {
  * @param {*} state
  * @param {*} action
  */
-export default function (
+export const user = (
   state = initialState,
   { type, token, menu }: IUserInitialState & Type
-) {
+) => {
   switch (type) {
     case actionTypes.userToken: {
       return {
@@ -45,4 +45,4 @@ export default function (
       return state;
     }
   }
-}
+};

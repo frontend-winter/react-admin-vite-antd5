@@ -4,7 +4,7 @@ import { Button, Checkbox, Form, Input } from "antd";
 
 import styles from "./index.module.scss";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "@/AuthProvider";
+import { AuthContext } from "@/app";
 const Login: React.FC = () => {
   const authContext = useContext(AuthContext);
   const navigator = useNavigate();
