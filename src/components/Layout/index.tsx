@@ -7,9 +7,10 @@ import { Content } from "@/components/Layout/Content";
 import { Footer } from "@/components/Layout/Footer";
 import { useSelector } from "react-redux";
 import { IUserInitialState } from "@/store/reducers/user";
+import { isMobile } from "@/common/utils/common";
 
 const Layout: React.FC = () => {
-  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [collapsed, setCollapsed] = useState<boolean>(isMobile());
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [openKeys, setOpenKeys] = useState<string[]>([""]);
   const { user } = useSelector(state => state) as { user: IUserInitialState };
