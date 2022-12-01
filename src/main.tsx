@@ -6,9 +6,15 @@ import "./main.css";
 import { BrowserRouter } from "react-router-dom";
 const container = document.getElementById("root");
 const root = createRoot(container as HTMLDivElement);
+
+console.log(import.meta.env);
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter
+      basename={
+        import.meta.env.MODE === "development" ? "/" : "/react-admin-vite-antd5"
+      }
+    >
       <App />
     </BrowserRouter>
   </Provider>
