@@ -28,7 +28,7 @@ export default defineConfig(config => {
     },
     base: config.mode === "development" ? "/" : "/react-admin-vite-antd5/",
     build: {
-      outDir: "./react-admin-vite-antd5",
+      outDir: "react-admin-vite-antd5",
     },
   };
 });
