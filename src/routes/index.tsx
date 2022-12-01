@@ -80,7 +80,7 @@ function pathToLazyComponent(Ele: string) {
     );
   let Components = lazy(path);
   return (
-    <Suspense fallback={<Spin size="large" />}>
+    <Suspense fallback={<Spin size="small" />}>
       <Components />
     </Suspense>
   );

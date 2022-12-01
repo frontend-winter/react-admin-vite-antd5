@@ -1,19 +1,22 @@
 import React, { useContext, useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Avatar, Button, Checkbox, Form, Input } from "antd";
 
 import styles from "./index.module.scss";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "@/app";
+import { AuthContext } from "@/common/context";
+import { useDispatch } from "react-redux";
+import { Settings } from "@/config/defaultSetting";
 const Login: React.FC = () => {
-  const authContext = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const navigator = useNavigate();
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState<boolean>(false);
   const onFinish = async (values: any) => {
     try {
       setLoading(true);
       const token = JSON.stringify(values);
-      await authContext.signIn(token);
+      await signIn(dispatch, token);
       navigator("/");
     } finally {
       setLoading(false);
@@ -22,6 +25,10 @@ const Login: React.FC = () => {
   const [form] = Form.useForm();
   return (
     <div id={styles.loginContainer}>
+      <div className={styles.loginTop}>
+        <h2>{Settings.title}</h2>
+        <Avatar src={Settings.logo} />
+      </div>
       <Form
         name="normal_login"
         className="login-form"
@@ -35,18 +42,19 @@ const Login: React.FC = () => {
           rules={[{ required: true, message: "Please input your Username!" }]}
         >
           <Input
-            prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Username"
+            allowClear
+            prefix={<UserOutlined />}
+            placeholder="admin or user"
           />
         </Form.Item>
         <Form.Item
           name="password"
           rules={[{ required: true, message: "Please input your Password!" }]}
         >
-          <Input
-            prefix={<LockOutlined className="site-form-item-icon" />}
+          <Input.Password
+            prefix={<LockOutlined />}
             type="password"
-            placeholder="Password"
+            placeholder="any password"
           />
         </Form.Item>
         <Form.Item>
@@ -54,7 +62,7 @@ const Login: React.FC = () => {
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
-          <a className="login-form-forgot" href="">
+          <a className="login-form-forgot" href="#">
             Forgot password
           </a>
         </Form.Item>

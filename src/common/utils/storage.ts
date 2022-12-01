@@ -1,6 +1,6 @@
 /***
  * title: storage.js
- * Author: Gaby
+ * Author: Winter
  * Email:
  * Time: 2022/6/8 15:53
  * last: 2022/7/4 15:53
@@ -8,6 +8,7 @@
  */
 
 import CryptoJS from "crypto-js";
+import { Settings } from "@/config/defaultSetting";
 
 // 十六位十六进制数作为密钥
 const SECRET_KEY = CryptoJS.enc.Utf8.parse("3333e6e143439161");
@@ -22,9 +23,9 @@ const config: {
   isEncrypt: boolean;
 } = {
   type: "localStorage", // 本地存储类型 localStorage sessionStorage
-  prefix: "xxx_0.0.1", // 名称前缀 建议：项目名 + 项目版本
+  prefix: Settings.title + "_0.0.1", // 名称前缀 建议：项目名 + 项目版本
   expire: 0, //过期时间 单位：秒
-  isEncrypt: false, // 默认加密 为了调试方便, 开发过程中可以不加密
+  isEncrypt: true, // 默认加密 为了调试方便, 开发过程中可以不加密
 };
 
 // 判断是否支持 Storage
@@ -39,7 +40,7 @@ export const isSupStorage = () => {
     throw new Error("当前环境非无法使用sessionStorage");
   }
 
-  return typeof Storage !== "undefined" ? true : false;
+  return typeof Storage !== "undefined";
 };
 
 // 设置 setStorage
@@ -69,27 +70,27 @@ export const setStorage = (
 // 获取 getStorage
 export const getStorage = (key: string) => {
   let value = null;
-  key = autoAddPrefix(key);
+  let prefixKey = autoAddPrefix(key);
   // key 不存在判断
   if (
-    !window[config.type].getItem(key) ||
-    JSON.stringify(window[config.type].getItem(key)) === "null"
+    !window[config.type].getItem(prefixKey) ||
+    JSON.stringify(window[config.type].getItem(prefixKey)) === "null"
   ) {
     return null;
   }
 
   // 优化 持续使用中续期
   const storage = config.isEncrypt
-    ? JSON.parse(decrypt(<string>window[config.type].getItem(key)))
-    : JSON.parse(<string>window[config.type].getItem(key));
+    ? JSON.parse(decrypt(<string>window[config.type].getItem(prefixKey)))
+    : JSON.parse(<string>window[config.type].getItem(prefixKey));
   const nowTime = Date.now();
   // 过期删除
   if (storage.expire && storage.expire < nowTime - storage.time) {
     removeStorage(key);
     return null;
   } else {
-    // // 未过期期间被调用 则自动续期 进行保活
-    // setStorage(autoRemovePrefix(key), storage.value);
+    // 未过期期间被调用 则自动续期 进行保活
+    // setStorage(autoRemovePrefix(prefixKey), storage.value);
     if (isJson(storage.value)) {
       value = JSON.parse(storage.value);
     } else {
@@ -105,7 +106,7 @@ export const hasStorage = (key: string) => {
   let arr = getStorageAll().filter(item => {
     return item.key === key;
   });
-  return arr.length ? true : false;
+  return !!arr.length;
 };
 
 // 获取所有key
