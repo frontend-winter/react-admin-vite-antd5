@@ -16,6 +16,7 @@ export default defineConfig(config => {
       },
     },
     server: {
+      open: true,
       port: 5793,
       proxy: {
         "/api": {
@@ -25,6 +26,9 @@ export default defineConfig(config => {
         },
       },
     },
-    base: config.mode === "development" ? "/" : "/react-admin-vite-antd5",
+    base: config.mode === "development" ? "/" : "/react-admin-vite-antd5/",
+    build: {
+      outDir: "./react-admin-vite-antd5",
+    },
   };
 });

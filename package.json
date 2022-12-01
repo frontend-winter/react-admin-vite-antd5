@@ -6,9 +6,9 @@
     "url": "https://github.com/frontend-winter/react-admin-vite-antd5"
   },
   "scripts": {
-    "build": "npm run typecheck && vite build",
+    "build": "npm run typecheck && vite build --mode production",
     "commit": "git-cz",
-    "dev": "vite",
+    "dev": "vite --mode development",
     "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
     "lint": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore",
     "prepare": "husky install",
