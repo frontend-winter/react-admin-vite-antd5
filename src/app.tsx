@@ -9,6 +9,8 @@ import { setMenu } from "@/store/actions";
 import { cloneDeep } from "lodash";
 import { AuthContext, signIn, signOut } from "@/common/context";
 import { MenuData } from "@/common/mock";
+import { useLocationListen } from "@/common/hooks";
+import { Settings } from "@/config/defaultSetting";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +23,9 @@ function App() {
     ...cloneDefaultRoutes[0].children,
   ];
   // console.log(cloneDefaultRoutes, "cloneDefaultRoutes");
+  useLocationListen(r => {
+    document.title = `${Settings.title}: ${r.pathname.replace("/", "")}`;
+  });
   const element = useRoutes(cloneDefaultRoutes);
   useEffect(() => {
     // console.log(token, "token");
