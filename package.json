@@ -37,6 +37,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@ant-design/pro-components": "^2.3.39",
+    "@emotion/css": "^11.10.5",
     "@types/redux-logger": "^3.0.9",
     "antd": "^5.0.1",
     "crypto-js": "^4.1.1",

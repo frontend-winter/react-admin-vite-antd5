@@ -8,7 +8,6 @@ import { Settings } from "./config/defaultSetting";
 const container = document.getElementById("root");
 const root = createRoot(container as HTMLDivElement);
 
-console.log(import.meta.env);
 root.render(
   <Provider store={store}>
     <BrowserRouter

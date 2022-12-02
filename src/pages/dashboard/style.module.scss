@@ -1,0 +1,173 @@
+
+.textOverflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.clearfix {
+  zoom: 1;
+  &::before,
+  &::after {
+    display: table;
+    content: ' ';
+  }
+  &::after {
+    clear: both;
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+  }
+}
+
+.activitiesList {
+  padding: 0 24px 8px 24px;
+  .username {
+    //color: @text-color;
+  }
+  .event {
+    font-weight: normal;
+  }
+}
+
+.pageHeaderContent {
+  display: flex;
+  .avatar {
+    flex: 0 1 72px;
+    & > span {
+      display: block;
+      width: 72px;
+      height: 72px;
+      border-radius: 72px;
+    }
+  }
+  .content {
+    position: relative;
+    top: 4px;
+    flex: 1 1 auto;
+    margin-left: 24px;
+    //color: @text-color-secondary;
+    line-height: 22px;
+    .contentTitle {
+      margin-bottom: 12px;
+      //color: @heading-color;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+}
+
+.extraContent {
+
+  white-space: nowrap;
+  .statItem {
+    position: relative;
+    display: inline-block;
+    padding: 0 32px;
+    > p:first-child {
+      margin-bottom: 4px;
+      //color: @text-color-secondary;
+      //font-size: @font-size-base;
+      line-height: 22px;
+    }
+    > p {
+      margin: 0;
+      //color: @heading-color;
+      font-size: 30px;
+      line-height: 38px;
+      > span {
+        //color: @text-color-secondary;
+        font-size: 20px;
+      }
+    }
+    &::after {
+      position: absolute;
+      top: 8px;
+      right: 0;
+      width: 1px;
+      height: 40px;
+      //background-color: @border-color-split;
+      content: '';
+    }
+    &:last-child {
+      padding-right: 0;
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.members {
+  a {
+    display: block;
+    height: 24px;
+    margin: 12px 0;
+    //color: @text-color;
+    transition: all 0.3s;
+    
+    .member {
+      margin-left: 12px;
+      //font-size: @font-size-base;
+      line-height: 24px;
+      vertical-align: top;
+    }
+    &:hover {
+      //color: @primary-color;
+    }
+  }
+}
+
+.projectList {
+  :global {
+    .ant-card-meta-description {
+      height: 44px;
+      overflow: hidden;
+      //color: @text-color-secondary;
+      line-height: 22px;
+    }
+  }
+  .cardTitle {
+    font-size: 0;
+    a {
+      display: inline-block;
+      height: 24px;
+      margin-left: 12px;
+      //color: @heading-color;
+      //font-size: @font-size-base;
+      line-height: 24px;
+      vertical-align: top;
+      &:hover {
+        //color: @primary-color;
+      }
+    }
+  }
+  .projectGrid {
+    width: 33.33%;
+  }
+  .projectItemContent {
+    display: flex;
+    height: 20px;
+    margin-top: 8px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    
+    a {
+      display: inline-block;
+      flex: 1 1 0;
+      //color: @text-color-secondary;
+      
+      &:hover {
+        //color: @primary-color;
+      }
+    }
+    .datetime {
+      flex: 0 0 auto;
+      float: right;
+      //color: @disabled-color;
+    }
+  }
+}

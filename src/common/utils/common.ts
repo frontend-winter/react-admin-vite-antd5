@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { MenuItem } from "@/components/Layout/layout";
 
 /**
  * @description sleep
@@ -53,6 +54,27 @@ const isMobile = () => {
     mobile_flag = true;
   }
   return mobile_flag;
+};
+
+export const treeRouter = (list: MenuItem[]) => {
+  return list.map(item => {
+    return {
+      path: item.path,
+      name: item.label,
+      icon: item.icon,
+      routes:
+        "children" in item
+          ? item.children!.map(({ children, icon, label, path }) => {
+              return {
+                path: path,
+                name: label,
+                icon: icon,
+                routes: children,
+              };
+            })
+          : undefined,
+    };
+  });
 };
 
 export { sleep, currentTimeRange, isMobile };
