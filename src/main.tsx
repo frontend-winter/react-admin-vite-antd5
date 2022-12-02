@@ -8,11 +8,11 @@ import { Settings } from "./config/defaultSetting";
 const container = document.getElementById("root");
 const root = createRoot(container as HTMLDivElement);
 
+// 生产环境配置二级路径
 root.render(
   <Provider store={store}>
     <BrowserRouter
       basename={
-        // 生产环境配置二级路径
         import.meta.env.MODE === "development" ? "/" : `/${Settings.title}/`
       }
     >
