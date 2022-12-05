@@ -5,6 +5,8 @@ import { defineConfig } from "vite";
 // https://vitejs.dev/config/
 import vitePluginCompression from "vite-plugin-compression";
 
+const baseUrl = "react-admin-vite-antd5";
+
 export default defineConfig(config => {
   console.log(config, "config");
   return {
@@ -33,9 +35,9 @@ export default defineConfig(config => {
         },
       },
     },
-    base: config.mode === "development" ? "/" : "/react-admin-vite-antd5/",
+    base: config.mode === "development" ? "/" : `/${baseUrl}/`,
     build: {
-      outDir: "react-admin-vite-antd5",
+      outDir: baseUrl,
     },
   };
 });

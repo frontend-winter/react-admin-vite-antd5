@@ -1,4 +1,3 @@
-// const logo = require("../assets/logo.jpg");
 import logo from "@/assets/logo.jpg";
 
 export const Settings = {
