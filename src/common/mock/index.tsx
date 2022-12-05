@@ -1,9 +1,10 @@
-import { MenuItem } from "@/components/Layout/layout";
 import {
   DesktopOutlined,
   TableOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+
+import { MenuItem } from "@/components/Layout/layout";
 
 export const MenuData: {
   user: MenuItem[];

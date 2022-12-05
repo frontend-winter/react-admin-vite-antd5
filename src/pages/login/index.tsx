@@ -1,12 +1,14 @@
-import React, { useContext, useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Checkbox, Form, Input } from "antd";
+import React, { useContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { AuthContext } from "@/common/context";
+import { Settings } from "@/config/defaultSetting";
 
 import styles from "./index.module.scss";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "@/common/context";
-import { useDispatch } from "react-redux";
-import { Settings } from "@/config/defaultSetting";
+
 const Login: React.FC = () => {
   const { signIn } = useContext(AuthContext);
   const navigator = useNavigate();
@@ -33,9 +35,9 @@ const Login: React.FC = () => {
         name="normal_login"
         className="login-form"
         initialValues={{ remember: true }}
-        onFinish={onFinish}
         size="large"
         form={form}
+        onFinish={onFinish}
       >
         <Form.Item
           name="username"
@@ -58,7 +60,7 @@ const Login: React.FC = () => {
           />
         </Form.Item>
         <Form.Item>
-          <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Form.Item noStyle name="remember" valuePropName="checked">
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
@@ -69,10 +71,10 @@ const Login: React.FC = () => {
 
         <Form.Item>
           <Button
+            block
             type="primary"
             htmlType="submit"
             className="login-form-button"
-            block
             loading={loading}
           >
             Log in

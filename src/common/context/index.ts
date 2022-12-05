@@ -1,7 +1,8 @@
 import React, { Dispatch } from "react";
+
 import { sleep } from "@/common/utils/common";
-import { getStorage, removeStorage, setStorage } from "@/common/utils/storage";
 import { TOKEN } from "@/common/utils/contans";
+import { getStorage, removeStorage, setStorage } from "@/common/utils/storage";
 import { setUserToken } from "@/store/actions";
 
 interface AuthContextType {
@@ -9,7 +10,7 @@ interface AuthContextType {
   signOut: (dispatch: Dispatch<any>) => Promise<any>;
 }
 
-export let AuthContext = React.createContext<AuthContextType>({
+export const AuthContext = React.createContext<AuthContextType>({
   signIn(dispatch, user): Promise<any> {
     return Promise.resolve(user);
   },
@@ -18,7 +19,7 @@ export let AuthContext = React.createContext<AuthContextType>({
   },
 });
 
-export let signIn = (dispatch: Dispatch<any>, values: string) => {
+export const signIn = (dispatch: Dispatch<any>, values: string) => {
   return new Promise(async (resolve, reject) => {
     try {
       await sleep(1000);
@@ -31,7 +32,7 @@ export let signIn = (dispatch: Dispatch<any>, values: string) => {
   });
 };
 
-export let signOut = (dispatch: Dispatch<any>) => {
+export const signOut = (dispatch: Dispatch<any>) => {
   return new Promise(async resolve => {
     try {
       removeStorage(TOKEN);

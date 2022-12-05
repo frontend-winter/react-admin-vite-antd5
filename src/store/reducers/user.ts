@@ -1,7 +1,7 @@
-import { actionTypes } from "@/store/actions";
-import { getStorage } from "@/common/utils/storage";
 import { TOKEN } from "@/common/utils/contans";
+import { getStorage } from "@/common/utils/storage";
 import { MenuItem } from "@/components/Layout/layout";
+import { actionTypes } from "@/store/actions";
 
 export interface IUserInitialState {
   role: string[];

@@ -1,16 +1,15 @@
-
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 60px;
   overflow: hidden;
-  white-space:nowrap;
-  div{
+  white-space: nowrap;
+  div {
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    transition: all .3s;
+    transition: all 0.3s;
   }
 
   .visible {
@@ -35,12 +34,12 @@
   justify-content: space-between;
 }
 
-.breadcrumb{
+.breadcrumb {
   padding: 15px 0;
   //border: 1px solid #000;
 }
 
-.markedWords{
+.markedWords {
   color: rgba(0, 0, 0, 0.85);
   font-weight: 500;
   font-size: 16px;

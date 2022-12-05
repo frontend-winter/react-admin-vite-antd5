@@ -8,6 +8,7 @@
  */
 
 import CryptoJS from "crypto-js";
+
 import { Settings } from "@/config/defaultSetting";
 
 // 十六位十六进制数作为密钥
@@ -56,7 +57,7 @@ export const setStorage = (
   if (isNaN(expire) || expire < 0) throw new Error("Expire must be a number");
 
   expire = (expire ? expire : config.expire) * 1000;
-  let data = {
+  const data = {
     value: value, // 存储值
     time: Date.now(), //存值时间戳
     expire: expire, // 过期时间
@@ -70,7 +71,7 @@ export const setStorage = (
 // 获取 getStorage
 export const getStorage = (key: string) => {
   let value = null;
-  let prefixKey = autoAddPrefix(key);
+  const prefixKey = autoAddPrefix(key);
   // key 不存在判断
   if (
     !window[config.type].getItem(prefixKey) ||
@@ -103,7 +104,7 @@ export const getStorage = (key: string) => {
 // 是否存在 hasStorage
 export const hasStorage = (key: string) => {
   key = autoAddPrefix(key);
-  let arr = getStorageAll().filter(item => {
+  const arr = getStorageAll().filter(item => {
     return item.key === key;
   });
   return !!arr.length;
@@ -111,8 +112,8 @@ export const hasStorage = (key: string) => {
 
 // 获取所有key
 export const getStorageKeys = () => {
-  let items = getStorageAll();
-  let keys = [];
+  const items = getStorageAll();
+  const keys = [];
   for (let index = 0; index < items.length; index++) {
     keys.push(items[index].key);
   }
@@ -132,7 +133,7 @@ export const getStorageLength = () => {
 // 获取全部 getAllStorage
 export const getStorageAll = () => {
   const len = getStorageLength(); // 获取长度
-  let arr = []; // 定义数据集
+  const arr = []; // 定义数据集
   for (let i = 0; i < len; i++) {
     const key = window[config.type].key(i);
     // 获取key 索引从0开始

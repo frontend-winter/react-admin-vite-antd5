@@ -1,23 +1,26 @@
 import "./App.scss";
-import { defaultRoutes, filepathToElement } from "./routes";
-import { useRoutes } from "react-router-dom";
+
+import lodash from "lodash";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IUserInitialState } from "@/store/reducers/user";
-import { ADMIN } from "@/common/utils/contans";
-import { setMenu } from "@/store/actions";
-import { cloneDeep } from "lodash";
+import { useRoutes } from "react-router-dom";
+
 import { AuthContext, signIn, signOut } from "@/common/context";
-import { MenuData } from "@/common/mock";
 import { useLocationListen } from "@/common/hooks";
+import { MenuData } from "@/common/mock";
+import { ADMIN } from "@/common/utils/contans";
 import { Settings } from "@/config/defaultSetting";
+import { setMenu } from "@/store/actions";
+import { IUserInitialState } from "@/store/reducers/user";
+
+import { defaultRoutes, filepathToElement } from "./routes";
 
 function App() {
   const dispatch = useDispatch();
   const {
     user: { token, menu },
   } = useSelector(state => state) as { user: IUserInitialState };
-  const cloneDefaultRoutes = cloneDeep(defaultRoutes);
+  const cloneDefaultRoutes = lodash.cloneDeep(defaultRoutes);
   cloneDefaultRoutes[0].children = [
     ...filepathToElement(menu),
     ...cloneDefaultRoutes[0].children,

@@ -1,15 +1,16 @@
-import Layout from "@/components/Layout";
-import ErrorPage from "@/pages/error-page";
-import Dashboard from "@/pages/dashboard";
-import Login from "@/pages/login";
+import { DashboardOutlined } from "@ant-design/icons";
+import { Alert, Button, Result, Spin } from "antd";
+import { lazy, Suspense } from "react";
 import { Navigate } from "react-router-dom";
+
+import { TOKEN } from "@/common/utils/contans";
+import { getStorage } from "@/common/utils/storage";
+import Layout from "@/components/Layout";
 import { MenuItem } from "@/components/Layout/layout";
 import OutletLayoutRouter from "@/components/OutletLayoutRouter";
-import { lazy, Suspense } from "react";
-import { Alert, Button, Result, Spin } from "antd";
-import { DashboardOutlined } from "@ant-design/icons";
-import { getStorage } from "@/common/utils/storage";
-import { TOKEN } from "@/common/utils/contans";
+import Dashboard from "@/pages/dashboard";
+import ErrorPage from "@/pages/error-page";
+import Login from "@/pages/login";
 
 const Permissions = ({ children }: any) => {
   const token = getStorage(TOKEN);
@@ -78,7 +79,7 @@ function pathToLazyComponent(Ele: string) {
         />
       </ErrorPage>
     );
-  let Components = lazy(path);
+  const Components = lazy(path);
   return (
     <Suspense fallback={<Spin size="small" />}>
       <Components />

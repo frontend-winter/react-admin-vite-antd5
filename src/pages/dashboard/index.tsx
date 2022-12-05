@@ -1,10 +1,12 @@
 import { Avatar, Statistic } from "antd";
 import type { FC } from "react";
 
-import styles from "./style.module.scss";
 // import { useSelector } from "react-redux";
 // import { IUserInitialState } from "@/store/reducers/user";
 import { currentTimeRange } from "@/common/utils/common";
+
+import styles from "./style.module.scss";
+
 const PageHeaderContent: FC<{ currentUser: any }> = ({ currentUser }) => {
   return (
     <div className={styles.pageHeaderContent}>

@@ -6,24 +6,25 @@ import {
   QuestionCircleFilled,
   SearchOutlined,
 } from "@ant-design/icons";
-import ProLayout from "@ant-design/pro-layout";
-import { Input, Switch, Tooltip } from "antd";
-import { useContext, useState } from "react";
-import KeepAlive from "@/common/hocs/keepAlive";
-import { IUserInitialState } from "@/store/reducers/user";
-import { useDispatch, useSelector } from "react-redux";
-import { baseRouterList } from "@/routes";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { AuthContext } from "@/common/context";
-import { Settings } from "@/config/defaultSetting";
 import {
   ProBreadcrumb,
   ProConfigProvider,
   ProSettings,
 } from "@ant-design/pro-components";
+import ProLayout from "@ant-design/pro-layout";
+import { Input, Switch, Tooltip } from "antd";
 import ErrorBoundary from "antd/es/alert/ErrorBoundary";
-import { treeRouter } from "@/common/utils/common";
+import { useContext, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import { AuthContext } from "@/common/context";
+import KeepAlive from "@/common/hocs/keepAlive";
 import { useLocationListen } from "@/common/hooks";
+import { treeRouter } from "@/common/utils/common";
+import { Settings } from "@/config/defaultSetting";
+import { baseRouterList } from "@/routes";
+import { IUserInitialState } from "@/store/reducers/user";
 
 export default () => {
   const { user } = useSelector(state => state) as { user: IUserInitialState };
@@ -55,9 +56,9 @@ export default () => {
         }}
       >
         <ProLayout
+          fixSiderbar
           siderWidth={245}
           logo={Settings.logo}
-          fixSiderbar
           ErrorBoundary={false}
           route={{
             path: "/",
@@ -136,6 +137,7 @@ export default () => {
                 <a
                   href="https://github.com/frontend-winter/react-admin-vite-antd5"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <GithubFilled key="GithubFilled" />
                 </a>
@@ -164,17 +166,17 @@ export default () => {
               </div>
             );
           }}
-          onMenuHeaderClick={() => navigate("/")}
           menuItemRender={(item, dom) => (
             <Link
+              to={item?.path || "/"}
               onClick={() => {
                 setPathname(item.path || "/");
               }}
-              to={item?.path || "/"}
             >
               {dom}
             </Link>
           )}
+          onMenuHeaderClick={() => navigate("/")}
         >
           <ErrorBoundary>
             <KeepAlive include={[]} keys={[]} />
