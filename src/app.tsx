@@ -1,6 +1,6 @@
 import "./App.scss";
 
-import lodash from "lodash";
+import { cloneDeep } from "lodash";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRoutes } from "react-router-dom";
@@ -20,7 +20,7 @@ function App() {
   const {
     user: { token, menu },
   } = useSelector(state => state) as { user: IUserInitialState };
-  const cloneDefaultRoutes = lodash.cloneDeep(defaultRoutes);
+  const cloneDefaultRoutes = cloneDeep(defaultRoutes);
   cloneDefaultRoutes[0].children = [
     ...filepathToElement(menu),
     ...cloneDefaultRoutes[0].children,
