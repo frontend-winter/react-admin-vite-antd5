@@ -7,6 +7,8 @@ This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang
 - [ReactJS](https://reactjs.org)
 - [Vite](https://vitejs.dev)
 - [TypeScript](https://www.typescriptlang.org)
+- [Antd5](https://ant.design)
+- [ProComponents](https://procomponents.ant.design)
 - [Jest](https://jestjs.io)
 - [Testing Library](https://testing-library.com)
 - [Cypress](https://www.cypress.io)
