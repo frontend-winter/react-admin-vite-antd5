@@ -3,7 +3,7 @@ module.exports = {
   "extends": [
   ],
   "plugins": [
-    "react",
+    "@react-native-community"
   ],
   "rules": {
     "import/first": "warn",
