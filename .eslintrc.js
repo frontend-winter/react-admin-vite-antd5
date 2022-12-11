@@ -1,21 +1,9 @@
-{
+module.exports = {
   "root": true,
   "extends": [
-    "eslint:recommended", // Eslint recommended configuration by eslint.
-    "plugin:import/recommended", // Linting of ES2015+ import/export syntax.
-    "plugin:react/recommended", // Recommended react linting configs.
-    "plugin:react-hooks/recommended", // Recommended react hooks linting configs.
-    "plugin:jsx-a11y/recommended", // Turns on a11y rules for JSX.
-    "plugin:@typescript-eslint/recommended", // Turns on rules from TypeScript-specific plugin.
-    "plugin:prettier/recommended" // Turns off all rules that are unnecessary or might conflict with Prettier.
   ],
   "plugins": [
     "react",
-    "react-hooks",
-    "jsx-a11y",
-    "@typescript-eslint",
-    "import",
-    "simple-import-sort" // Plugin for sorting imports in file.
   ],
   "rules": {
     "import/first": "warn",
@@ -42,7 +30,6 @@
     "browser": true, // enable use of global browser variables like `windows`.
     "node": true // enable use of global node variables like `process`.
   },
-  "parser": "@typescript-eslint/parser", // Allows Eslint to understand TypeScript syntax.
   "parserOptions": {
     "project": "./tsconfig.eslint.json", // Specify where to find the root tsconfig file of your project.
     "ecmaVersion": 2021, // ECMAScript version supported in the project.
@@ -55,14 +42,5 @@
     "react": {
       "version": "detect" // auto-detect React version from package.json.
     },
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"] // use typescript-eslint parser for .ts|tsx files.
-    },
-    "import/resolver": {
-      "typescript": {
-        "project": "./tsconfig.eslint.json",
-        "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`.
-      }
-    }
   }
 }
