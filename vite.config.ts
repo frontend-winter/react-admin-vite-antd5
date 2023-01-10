@@ -15,7 +15,7 @@ export default defineConfig(config => {
       react(),
       vitePluginCompression({
         threshold: 1024 * 10, // 对大于 10kb 的文件进行压缩
-        deleteOriginFile: true,
+        // deleteOriginFile: true,
       }),
     ],
     resolve: {
