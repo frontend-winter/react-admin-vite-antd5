@@ -1,18 +1,18 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Checkbox, Form, Input } from "antd";
 import React, { useContext, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from "@/common/context";
 import { Settings } from "@/config/defaultSetting";
 
 import styles from "./index.module.scss";
+import { useAppDispatch } from "@/common/hooks";
 
 const Login: React.FC = () => {
   const { signIn } = useContext(AuthContext);
   const navigator = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [loading, setLoading] = useState<boolean>(false);
   const onFinish = async (values: any) => {
     try {

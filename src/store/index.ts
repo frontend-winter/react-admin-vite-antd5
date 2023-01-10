@@ -1,15 +1,17 @@
-// 用于创建仓库，并导出
-import { applyMiddleware, legacy_createStore as createStore } from "redux";
-// 安装redux-devtools-extension的可视化工具。
-import { composeWithDevTools } from "redux-devtools-extension";
-import logger from "redux-logger";
-import thunk from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
+import user from "@/store/reducers/user";
+import common from "@/store/reducers/common";
 
-import reducer from "./reducers";
+const store = configureStore({
+  reducer: {
+    user,
+    common,
+  },
+});
 
-const store = createStore(
-  reducer,
-  composeWithDevTools(applyMiddleware(thunk, logger))
-);
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
 
 export default store;

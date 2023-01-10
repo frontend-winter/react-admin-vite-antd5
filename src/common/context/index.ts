@@ -3,7 +3,7 @@ import React, { Dispatch } from "react";
 import { sleep } from "@/common/utils/common";
 import { TOKEN } from "@/common/utils/contans";
 import { getStorage, removeStorage, setStorage } from "@/common/utils/storage";
-import { setUserToken } from "@/store/actions";
+import { setUserToken } from "@/store/reducers/user";
 
 interface AuthContextType {
   signIn: (dispatch: Dispatch<any>, user: string) => Promise<any>;

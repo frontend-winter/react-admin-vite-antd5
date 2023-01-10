@@ -2,24 +2,26 @@ import "./App.scss";
 
 import { cloneDeep } from "lodash";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useRoutes } from "react-router-dom";
 
 import { AuthContext, signIn, signOut } from "@/common/context";
-import { useLocationListen } from "@/common/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useLocationListen,
+} from "@/common/hooks";
 import { MenuData } from "@/common/mock";
 import { ADMIN } from "@/common/utils/contans";
 import { Settings } from "@/config/defaultSetting";
-import { setMenu } from "@/store/actions";
-import { IUserInitialState } from "@/store/reducers/user";
+import { setMenu } from "@/store/reducers/user";
 
 import { defaultRoutes, filepathToElement } from "./routes";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {
     user: { token, menu },
-  } = useSelector(state => state) as { user: IUserInitialState };
+  } = useAppSelector(state => state);
   const cloneDefaultRoutes = cloneDeep(defaultRoutes);
   cloneDefaultRoutes[0].children = [
     ...filepathToElement(menu),

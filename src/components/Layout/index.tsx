@@ -15,23 +15,25 @@ import ProLayout from "@ant-design/pro-layout";
 import { Input, Switch, Tooltip } from "antd";
 import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 import { useContext, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "@/common/context";
 import KeepAlive from "@/common/hocs/keepAlive";
-import { useLocationListen } from "@/common/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useLocationListen,
+} from "@/common/hooks";
 import { treeRouter } from "@/common/utils/common";
 import { Settings } from "@/config/defaultSetting";
 import { baseRouterList } from "@/routes";
-import { IUserInitialState } from "@/store/reducers/user";
 
 export default () => {
-  const { user } = useSelector(state => state) as { user: IUserInitialState };
+  const { user } = useAppSelector(state => state);
   const navigate = useNavigate();
   const location = useLocation();
   const [pathname, setPathname] = useState(location.pathname);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { signOut } = useContext(AuthContext);
   const [dark, setDark] = useState(false);
 

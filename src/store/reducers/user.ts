@@ -1,8 +1,7 @@
 import { TOKEN } from "@/common/utils/contans";
 import { getStorage } from "@/common/utils/storage";
 import { MenuItem } from "@/components/Layout/layout";
-import { actionTypes } from "@/store/actions";
-
+import { createSlice } from "@reduxjs/toolkit";
 export interface IUserInitialState {
   role: string[];
   token: string;
@@ -19,30 +18,20 @@ const initialState: IUserInitialState = {
   token: getStorage(TOKEN) ?? "",
   menu: [],
 };
-/**
- * user
- * @param {*} state
- * @param {*} action
- */
-export const user = (
-  state = initialState,
-  { type, token, menu }: IUserInitialState & Type
-) => {
-  switch (type) {
-    case actionTypes.userToken: {
-      return {
-        ...state,
-        token,
-      };
-    }
-    case actionTypes.menu: {
-      return {
-        ...state,
-        menu: menu,
-      };
-    }
-    default: {
-      return state;
-    }
-  }
-};
+
+export const userSlice = createSlice({
+  name: "user",
+  initialState: initialState,
+  reducers: {
+    setUserToken: (state, action) => {
+      state.token = action.payload;
+    },
+    setMenu: (state, action) => {
+      state.menu = action.payload;
+    },
+  },
+});
+
+export const { setUserToken, setMenu } = userSlice.actions;
+
+export default userSlice.reducer;

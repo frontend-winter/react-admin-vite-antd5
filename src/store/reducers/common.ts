@@ -1,19 +1,18 @@
-// 默认状态
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   data: [],
 };
-/**
- * 控制查询结果的reducer
- * @param {*} state
- * @param {*} action
- */
-export default function (
-  state = initialState,
-  { type }: { type: string; payload: any }
-) {
-  switch (type) {
-    default: {
-      return state;
-    }
-  }
-}
+export const commonSlice = createSlice({
+  name: "common",
+  initialState: initialState,
+  reducers: {
+    setData: (state, action) => {
+      state.data = action.payload;
+    },
+  },
+});
+
+export const { setData } = commonSlice.actions;
+
+export default commonSlice.reducer;

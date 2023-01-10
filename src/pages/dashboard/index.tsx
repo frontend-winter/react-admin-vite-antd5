@@ -1,10 +1,6 @@
 import { Avatar, Statistic } from "antd";
 import type { FC } from "react";
-
-// import { useSelector } from "react-redux";
-// import { IUserInitialState } from "@/store/reducers/user";
 import { currentTimeRange } from "@/common/utils/common";
-
 import styles from "./style.module.scss";
 
 const PageHeaderContent: FC<{ currentUser: any }> = ({ currentUser }) => {
@@ -41,10 +37,6 @@ const ExtraContent: FC<Record<string, any>> = () => (
 );
 
 const Workplace: FC = () => {
-  // const { user } = useSelector(state => state) as { user: IUserInitialState };
-
-  // const username =
-  //   (user.token as unknown as { username: string })?.username ?? "visitor";
   return (
     // <PageContainer
     //   waterMarkProps={{ content: username }}

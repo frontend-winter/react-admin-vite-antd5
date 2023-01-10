@@ -1,5 +1,4 @@
 import React, { memo, useEffect, useMemo, useReducer, useRef } from "react";
-// import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { useLocation, useOutlet } from "react-router-dom";
 
 const KeepAlive = (props: { include: any; keys: any }) => {
@@ -31,7 +30,7 @@ const KeepAlive = (props: { include: any; keys: any }) => {
   return (
     <>
       {Array.from(componentList.current).map(([key, component]) => (
-        <div key={key} style={{ border: "1px solid red" }}>
+        <div key={key}>
           {key === activeKey.current ? (
             <div>{component}</div>
           ) : (
@@ -40,28 +39,6 @@ const KeepAlive = (props: { include: any; keys: any }) => {
         </div>
       ))}
     </>
-    // <TransitionGroup component={null}>
-    //   {Array.from(componentList.current).map(([key, component]) => (
-    //     <CSSTransition key={key} appear={true} timeout={500} classNames="fade">
-    //       {key === activeKey.current ? (
-    //         <div
-    //           className={`layout-container${
-    //             include.includes(key.split("__")[0]) ? " keep-alive-fade" : ""
-    //           }`}
-    //         >
-    //           {component}
-    //         </div>
-    //       ) : (
-    //         <div
-    //           className="layout-container__keep-alive"
-    //           style={{ display: "none" }}
-    //         >
-    //           {component}
-    //         </div>
-    //       )}
-    //     </CSSTransition>
-    //   ))}
-    // </TransitionGroup>
   );
 };
 
