@@ -65,5 +65,5 @@ out
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
+package-lock.json
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains,macos,node
