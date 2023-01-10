@@ -31,7 +31,7 @@ const KeepAlive = (props: { include: any; keys: any }) => {
   return (
     <>
       {Array.from(componentList.current).map(([key, component]) => (
-        <div key={key}>
+        <div key={key} style={{ border: "1px solid red" }}>
           {key === activeKey.current ? (
             <div>{component}</div>
           ) : (
