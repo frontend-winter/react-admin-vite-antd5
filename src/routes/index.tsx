@@ -1,7 +1,7 @@
 import { DashboardOutlined } from "@ant-design/icons";
 import { Alert, Button, Result, Spin } from "antd";
 import { lazy, Suspense } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { TOKEN } from "@/common/utils/contans";
 import { getStorage } from "@/common/utils/storage";
@@ -49,7 +49,11 @@ export const defaultRoutes: any = [
               status="404"
               title="404"
               subTitle="Sorry, the page you visited does not exist."
-              extra={<Button type="primary">Back Home</Button>}
+              extra={
+                <Link to={"/"}>
+                  <Button type="primary">Back Home</Button>
+                </Link>
+              }
             />
           </ErrorPage>
         ),
