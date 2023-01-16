@@ -4,10 +4,10 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from "@/common/context";
+import { useAppDispatch } from "@/common/hooks";
 import { Settings } from "@/config/defaultSetting";
 
 import styles from "./index.module.scss";
-import { useAppDispatch } from "@/common/hooks";
 
 const Login: React.FC = () => {
   const { signIn } = useContext(AuthContext);

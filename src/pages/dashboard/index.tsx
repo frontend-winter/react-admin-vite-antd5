@@ -1,6 +1,8 @@
 import { Avatar, Statistic } from "antd";
 import type { FC } from "react";
+
 import { currentTimeRange } from "@/common/utils/common";
+
 import styles from "./style.module.scss";
 
 const PageHeaderContent: FC<{ currentUser: any }> = ({ currentUser }) => {

@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Location, useLocation } from "react-router-dom";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import type { RootState, AppDispatch } from "@/store";
+import { Location, useLocation } from "react-router-dom";
+
+import type { AppDispatch, RootState } from "@/store";
 
 const useLocationListen = (listener: (location: Location) => void) => {
   const location = useLocation();
@@ -14,4 +15,4 @@ const useLocationListen = (listener: (location: Location) => void) => {
 const useAppDispatch: () => AppDispatch = useDispatch;
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-export { useLocationListen, useAppDispatch, useAppSelector };
+export { useAppDispatch, useAppSelector, useLocationListen };
