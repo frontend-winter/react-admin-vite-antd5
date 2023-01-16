@@ -10,9 +10,8 @@
     "build": "npm run typecheck && vite build --mode production",
     "serve": "npm run build && vite preview --port 3000",
     "clean": "rm -rf node_modules && rm -rf react-admin-vite-antd5",
-    "commit": "git-cz",
-    "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
     "lint": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore",
+    "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
     "typecheck": "tsc --noEmit",
     "prepare": "husky install"
   },
