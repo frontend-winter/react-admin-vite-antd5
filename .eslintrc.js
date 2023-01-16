@@ -1,7 +1,14 @@
 module.exports = {
   root: true,
   extends: [],
-  plugins: ["@react-native-community"],
+  parser: "@typescript-eslint/parser",
+
+  plugins: [
+    "import",
+    "simple-import-sort",
+    "@react-native-community",
+    "eslint-plugin-react",
+  ],
   rules: {
     "import/first": "warn",
     "import/newline-after-import": "warn",
@@ -11,16 +18,6 @@ module.exports = {
     "simple-import-sort/exports": "warn",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-sort-props": [
-      "warn",
-      {
-        callbacksLast: true,
-        shorthandFirst: true,
-        ignoreCase: true,
-        reservedFirst: true,
-        noSortAlphabetically: true,
-      },
-    ],
   },
   env: {
     es6: true, // enable ES2015 features.
@@ -28,6 +25,7 @@ module.exports = {
     node: true, // enable use of global node variables like `process`.
   },
   parserOptions: {
+    parser: "babel-eslint",
     project: "./tsconfig.eslint.json", // Specify where to find the root tsconfig file of your project.
     ecmaVersion: 2021, // ECMAScript version supported in the project.
     sourceType: "module", // set to `module` because we ue ECMAScript modules.
