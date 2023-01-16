@@ -12,7 +12,8 @@
     "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
     "lint": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore",
     "serve": "npm run build && vite preview --port 3000",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
@@ -49,6 +50,7 @@
     "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-react": "^7.32.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
+    "husky": "^8.0.3",
     "prettier": "^2.7.1",
     "redux-devtools-extension": "^2.13.9",
     "start-server-and-test": "^1.14.0",
