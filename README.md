@@ -70,21 +70,6 @@ npm run build
 npm run serve
 ```
 
-### Test commands
-
-- Run unit tests and watch
-  ```bash
-  npm run test:unit
-  ```
-- Run unit tests with coverage
-  ```bash
-  npm run test:unit:coverage
-  ```
-- Run e2e tests
-  ```bash
-  npm run test:e2e
-  ```
-
 ## License
 
 This project is licensed under the MIT License.
