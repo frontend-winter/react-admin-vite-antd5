@@ -1,7 +1,13 @@
 import React from "react";
 
+import Text from "@/components/Text";
+
 function RoleManagement() {
-  return <div>RoleManagement123</div>;
+  return (
+    <div>
+      <Text>RoleManagement123</Text>
+    </div>
+  );
 }
 
 export default RoleManagement;

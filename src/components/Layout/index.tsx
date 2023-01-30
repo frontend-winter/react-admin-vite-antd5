@@ -161,8 +161,8 @@ export default () => {
             return (
               <div style={{ textAlign: "center" }}>
                 <Switch
-                  checkedChildren="light"
-                  unCheckedChildren="dark"
+                  checkedChildren="🌜"
+                  unCheckedChildren="🌞"
                   defaultChecked={false}
                   onChange={v => setDark(v)}
                 />
