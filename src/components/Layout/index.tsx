@@ -48,6 +48,7 @@ export default () => {
     layout: "mix",
     // splitMenus: true,
   };
+  console.log("layout");
 
   return (
     <ProConfigProvider dark={dark}>
