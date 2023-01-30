@@ -1,4 +1,3 @@
-import legacy from "@vitejs/plugin-legacy";
 import react from "@vitejs/plugin-react";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
@@ -11,7 +10,6 @@ export default defineConfig(config => {
   console.log(config, "config");
   return {
     plugins: [
-      legacy(),
       react(),
       vitePluginCompression({
         threshold: 1024 * 10, // 对大于 10kb 的文件进行压缩
