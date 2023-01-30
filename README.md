@@ -37,12 +37,12 @@ This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang
 4. Install dependencies.
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 5. Start dev server with hot reload at http://localhost:5793.
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 ## Recommended VS Code extensions
@@ -55,19 +55,19 @@ This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang
 ### Lint commands
 
 ```bash
-npm run lint
+pnpm run lint && pnpm run format
 ```
 
 ### Build commands
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### Run the app in production mode at http://localhost:5793.
 
 ```bash
-npm run serve
+pnpm run serve
 ```
 
 ## License
