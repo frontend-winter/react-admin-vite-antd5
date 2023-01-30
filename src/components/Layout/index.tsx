@@ -48,7 +48,6 @@ export default () => {
     layout: "mix",
     // splitMenus: true,
   };
-  console.log("layout");
 
   return (
     <ProConfigProvider dark={dark}>
@@ -145,13 +144,15 @@ export default () => {
                   <GithubFilled key="GithubFilled" />
                 </a>
               </Tooltip>,
-              <Tooltip placement="bottom" title={"singOut"}>
-                <LoginOutlined
-                  onClick={async () => {
-                    await signOut(dispatch);
-                    navigate("/login");
-                  }}
-                />
+              <Tooltip placement="bottom" title={"Sign Out"}>
+                <a>
+                  <LoginOutlined
+                    onClick={async () => {
+                      await signOut(dispatch);
+                      navigate("/login");
+                    }}
+                  />
+                </a>
               </Tooltip>,
             ];
           }}
@@ -159,10 +160,9 @@ export default () => {
             if (props?.collapsed || props?.isMobile) return undefined;
             return (
               <div style={{ textAlign: "center" }}>
-                Late Night mode
                 <Switch
-                  // checkedChildren="开启"
-                  // unCheckedChildren="关闭"
+                  checkedChildren="light"
+                  unCheckedChildren="dark"
                   defaultChecked={false}
                   onChange={v => setDark(v)}
                 />

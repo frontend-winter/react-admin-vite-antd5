@@ -1,4 +1,5 @@
-import { Avatar, Statistic } from "antd";
+import { PageContainer } from "@ant-design/pro-layout";
+import { Avatar, Col, Row, Statistic, Typography } from "antd";
 import type { FC } from "react";
 
 import { currentTimeRange } from "@/common/utils/common";
@@ -40,50 +41,50 @@ const ExtraContent: FC<Record<string, any>> = () => (
 
 const Workplace: FC = () => {
   return (
-    // <PageContainer
-    //   waterMarkProps={{ content: username }}
-    //   style={{ background: "#fff" }}
-    //   content={
-    //     <div style={{ display: "flex", justifyContent: "space-between" }}>
-    //       <PageHeaderContent
-    //         currentUser={{
-    //           avatar:
-    //             "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png",
-    //           name: "吴彦祖",
-    //           userid: "00000001",
-    //           email: "antdesign@alipay.com",
-    //           signature: "海纳百川，有容乃大",
-    //           title: "交互专家",
-    //           group: "某某某事业群－某某平台部－某某技术部－UED",
-    //         }}
-    //       />
-    //       <ExtraContent />
-    //     </div>
-    //   }
-    // >
-    //   <Row gutter={24}>
-    //     <Col xl={8} lg={24} md={24} sm={24} xs={24}>
-    //       Hello word
-    //     </Col>
-    //   </Row>
-    // </PageContainer>
-    <div style={{ background: "#fff" }}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <PageHeaderContent
-          currentUser={{
-            avatar:
-              "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png",
-            name: "吴彦祖",
-            userid: "00000001",
-            email: "antdesign@alipay.com",
-            signature: "海纳百川，有容乃大",
-            title: "交互专家",
-            group: "某某某事业群－某某平台部－某某技术部－UED",
-          }}
-        />
-        <ExtraContent />
-      </div>
-    </div>
+    <PageContainer
+      // waterMarkProps={{ content: username }}
+      // style={{ background: "#fff" }}
+      content={
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <PageHeaderContent
+            currentUser={{
+              avatar:
+                "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png",
+              name: "吴彦祖",
+              userid: "00000001",
+              email: "antdesign@alipay.com",
+              signature: "海纳百川，有容乃大",
+              title: "交互专家",
+              group: "某某某事业群－某某平台部－某某技术部－UED",
+            }}
+          />
+          <ExtraContent />
+        </div>
+      }
+    >
+      <Row gutter={24}>
+        <Col xl={8} lg={24} md={24} sm={24} xs={24}>
+          <Typography.Text>Hello word</Typography.Text>
+        </Col>
+      </Row>
+    </PageContainer>
+    // <div>
+    //   <div style={{ display: "flex", justifyContent: "space-between" }}>
+    //     <PageHeaderContent
+    //       currentUser={{
+    //         avatar:
+    //           "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png",
+    //         name: "吴彦祖",
+    //         userid: "00000001",
+    //         email: "antdesign@alipay.com",
+    //         signature: "海纳百川，有容乃大",
+    //         title: "交互专家",
+    //         group: "某某某事业群－某某平台部－某某技术部－UED",
+    //       }}
+    //     />
+    //     <ExtraContent />
+    //   </div>
+    // </div>
   );
 };
 export default Workplace;
