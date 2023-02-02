@@ -1,5 +1,6 @@
 import "./main.css";
 
+import { ConfigProvider } from "antd";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
@@ -15,7 +16,17 @@ root.render(
       // 生产环境配置二级路径
       basename={"/" + import.meta.env.BASE_URL.replaceAll("/", "")}
     >
-      <App />
+      <ConfigProvider
+        theme={{
+          token: {
+            borderRadius: 4,
+            fontSize: 14,
+            colorPrimary: "pink",
+          },
+        }}
+      >
+        <App />
+      </ConfigProvider>
     </BrowserRouter>
   </Provider>
 );
