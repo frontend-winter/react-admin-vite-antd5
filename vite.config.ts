@@ -1,13 +1,13 @@
 import react from "@vitejs/plugin-react";
-import { fileURLToPath } from "url";
-import { defineConfig } from "vite";
 // https://vitejs.dev/config/
+import { defineConfig } from "vite";
 import vitePluginCompression from "vite-plugin-compression";
+
+const path = require("path");
 
 const baseUrl = "react-admin-vite-antd5";
 
 export default defineConfig(config => {
-  console.log(config, "config");
   return {
     plugins: [
       react(),
@@ -18,8 +18,7 @@ export default defineConfig(config => {
     ],
     resolve: {
       alias: {
-        // for TypeScript path alias import like : @/x/y/z
-        "@": fileURLToPath(new URL("./src", import.meta.url)),
+        "@": path.resolve(__dirname, "./src"),
       },
     },
     server: {
