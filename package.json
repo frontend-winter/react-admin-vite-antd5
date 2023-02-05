@@ -15,6 +15,10 @@
     "typecheck": "tsc --noEmit",
     "prepare": "husky install"
   },
+  "engines": {
+    "node": ">=16.00",
+    "npm": ">=9.0.0"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@ant-design/pro-components": "^2.3.52",
