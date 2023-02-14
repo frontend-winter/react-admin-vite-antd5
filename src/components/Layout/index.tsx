@@ -14,7 +14,7 @@ import {
 import ProLayout from "@ant-design/pro-layout";
 import { Input, Switch, Tooltip } from "antd";
 import ErrorBoundary from "antd/es/alert/ErrorBoundary";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "@/common/context";
@@ -35,7 +35,9 @@ export default () => {
   const [pathname, setPathname] = useState(location.pathname);
   const dispatch = useAppDispatch();
   const { signOut } = useContext(AuthContext);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
 
   useLocationListen(listener => {
     // console.log(listener, "listener");
@@ -48,6 +50,19 @@ export default () => {
     layout: "mix",
     // splitMenus: true,
   };
+
+  useEffect(() => {
+    // 监听 Macos系统 颜色切换
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", event => {
+        if (event.matches) {
+          setDark(true);
+        } else {
+          setDark(false);
+        }
+      });
+  }, []);
 
   return (
     <ProConfigProvider dark={dark}>

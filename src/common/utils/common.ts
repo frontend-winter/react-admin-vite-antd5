@@ -1,5 +1,3 @@
-import dayjs from "dayjs";
-
 import { MenuItem } from "@/components/Layout/layout";
 
 /**
@@ -13,19 +11,22 @@ const sleep = (time: number | undefined) =>
     }, time);
   });
 
+const timeList = ["早上好", "上午好", "中午好", "下午好", "晚上好"];
 const currentTimeRange = () => {
-  const now = dayjs();
-  const hours = now.hour();
+  const now = new Date();
+  const hours = now.getHours();
   let text = "";
   // 判断当前时间段
-  if (hours >= 0 && hours <= 10) {
-    text = `早上好`;
-  } else if (hours > 10 && hours <= 14) {
-    text = `中午好`;
-  } else if (hours > 14 && hours <= 18) {
-    text = `下午好`;
-  } else if (hours > 18 && hours <= 24) {
-    text = `晚上好`;
+  if (hours >= 0 && hours < 9) {
+    text = timeList[0];
+  } else if (hours >= 9 && hours < 11) {
+    text = timeList[1];
+  } else if (hours >= 11 && hours < 13) {
+    text = timeList[2];
+  } else if (hours >= 13 && hours < 18) {
+    text = timeList[3];
+  } else if (hours >= 18 && hours < 24) {
+    text = timeList[4];
   }
   return text;
 };
