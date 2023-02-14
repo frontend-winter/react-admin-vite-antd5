@@ -178,7 +178,7 @@ export default () => {
                 <Switch
                   checkedChildren="🌜"
                   unCheckedChildren="🌞"
-                  defaultChecked={false}
+                  checked={dark}
                   onChange={v => setDark(v)}
                 />
               </div>
