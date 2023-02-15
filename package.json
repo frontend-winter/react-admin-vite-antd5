@@ -34,7 +34,8 @@
     "react-router-dom": "^6.4.3",
     "react-transition-group": "^4.4.5",
     "redux": "^4.2.0",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "umi-request": "^1.4.0"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^3.2.0",

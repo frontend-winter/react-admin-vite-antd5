@@ -92,7 +92,7 @@ export default () => {
             {
               icon: "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
               title: "Blog",
-              desc: "杭州市较知名的 UI 设计语言",
+              desc: "hzdjs.cn",
               url: "https://hzdjs.cn",
             },
           ]}
@@ -147,9 +147,6 @@ export default () => {
                   />
                 </div>
               ) : undefined,
-              <InfoCircleFilled key="InfoCircleFilled" />,
-              <QuestionCircleFilled key="QuestionCircleFilled" />,
-
               <Tooltip placement="bottom" title={"Github"}>
                 <a
                   href="https://github.com/frontend-winter/react-admin-vite-antd5"
@@ -174,13 +171,23 @@ export default () => {
           menuFooterRender={props => {
             if (props?.collapsed || props?.isMobile) return undefined;
             return (
-              <div style={{ textAlign: "center" }}>
-                <Switch
-                  checkedChildren="🌜"
-                  unCheckedChildren="🌞"
-                  checked={dark}
-                  onChange={v => setDark(v)}
-                />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <QuestionCircleFilled key="QuestionCircleFilled" />
+                <InfoCircleFilled key="InfoCircleFilled" />
+                <Tooltip placement="bottom" title={"Switch topic"}>
+                  <Switch
+                    checkedChildren="🌜"
+                    unCheckedChildren="🌞"
+                    checked={dark}
+                    onChange={v => setDark(v)}
+                  />
+                </Tooltip>
               </div>
             );
           }}
