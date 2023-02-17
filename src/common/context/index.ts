@@ -23,7 +23,7 @@ export const signIn = (dispatch: Dispatch<any>, values: string) => {
   return new Promise(async (resolve, reject) => {
     try {
       await sleep(1000);
-      setStorage(TOKEN, values, 1000 * 60);
+      setStorage(TOKEN, values, 1000 * 60 * 24);
       dispatch(setUserToken(getStorage(TOKEN)));
       resolve({});
     } catch {
