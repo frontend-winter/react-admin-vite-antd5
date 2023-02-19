@@ -64,9 +64,5 @@
     "typescript": "^4.7.4",
     "vite": "^3.2.5",
     "vite-plugin-compression": "^0.5.1"
-  },
-  "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=7.0.0"
   }
 }
