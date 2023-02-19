@@ -79,4 +79,18 @@ export const treeRouter = (list: MenuItem[]) => {
   });
 };
 
-export { currentTimeRange, isMobile, sleep };
+const getOperatingSystem = () => {
+  const agent = navigator.userAgent.toLowerCase();
+  const isMac = /macintosh|mac os x/i.test(navigator.userAgent);
+  if (agent.indexOf("win32") >= 0 || agent.indexOf("wow32") >= 0) {
+    return "win32";
+  }
+  if (agent.indexOf("win64") >= 0 || agent.indexOf("wow64") >= 0) {
+    return "win32";
+  }
+  if (isMac) {
+    return "mac";
+  }
+};
+
+export { currentTimeRange, getOperatingSystem, isMobile, sleep };

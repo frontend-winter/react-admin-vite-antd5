@@ -24,7 +24,7 @@ import {
   useAppSelector,
   useLocationListen,
 } from "@/common/hooks";
-import { treeRouter } from "@/common/utils/common";
+import { getOperatingSystem, treeRouter } from "@/common/utils/common";
 import { Settings } from "@/config/defaultSetting";
 import { baseRouterList } from "@/routes";
 
@@ -36,7 +36,8 @@ export default () => {
   const dispatch = useAppDispatch();
   const { signOut } = useContext(AuthContext);
   const [dark, setDark] = useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    getOperatingSystem() === "mac" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
   );
 
   useLocationListen(listener => {
