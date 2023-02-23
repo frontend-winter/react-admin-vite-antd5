@@ -1,0 +1,47 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+  div {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    transition: all 0.3s;
+  }
+
+  .visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+  }
+
+  .hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+  }
+}
+
+.content {
+  background-color: #fff !important;
+}
+.header {
+  background-color: #fff !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.breadcrumb {
+  padding: 15px 0;
+  //border: 1px solid #000;
+}
+
+.markedWords {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 28px;
+}

@@ -1,0 +1,30 @@
+{
+  "name": "react-admin-vite-antd5",
+  "version": "0.0.0",
+  "author": {
+    "name": "frontend-winter",
+    "url": "https://github.com/frontend-winter/react-admin-vite-antd5"
+  },
+  "scripts": {
+    "bootstrap": "pnpm install",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "reinstall": "pnpm run clean && rm -rf node_modules && rm -rf pnpm-lock.yaml && pnpm run bootstrap",
+    "lint": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore",
+    "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "husky": "^8.0.3",
+    "prettier": "^2.5.1",
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=16.00",
+    "npm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@7.27.0"
+}

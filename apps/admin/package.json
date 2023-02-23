@@ -1,0 +1,50 @@
+{
+  "name": "admin",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint \"src/**/*.ts\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf build"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.8.0",
+    "@ant-design/pro-components": "^2.3.52",
+    "@ant-design/pro-layout": "^7.6.1",
+    "@babel/core": "7",
+    "@emotion/css": "^11.10.5",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@types/redux-logger": "^3.0.9",
+    "antd": "^5.0.1",
+    "dayjs": "^1.11.6",
+    "lodash": "^4.17.21",
+    "rc-field-form": "1.22",
+    "rc-texty": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.4.3",
+    "react-transition-group": "^4.4.5",
+    "redux": "^4.2.0",
+    "sass": "^1.56.1",
+    "ui": "workspace:*",
+    "umi-request": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.190",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "@vitejs/plugin-react": "^2.2.0",
+    "crypto-js": "^4.1.1",
+    "eslint-config-custom": "workspace:*",
+    "redux-devtools-extension": "^2.13.9",
+    "start-server-and-test": "^1.14.0",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.3",
+    "vite-plugin-compression": "^0.5.1"
+  }
+}
