@@ -1,4 +1,6 @@
+import React from "react";
 import {
+  DashboardOutlined,
   GithubFilled,
   InfoCircleFilled,
   LoginOutlined,
@@ -17,17 +19,32 @@ import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { AuthContext } from "@/common/context";
-import KeepAlive from "@/common/hocs/keepAlive";
 import {
+  AuthContext,
   useAppDispatch,
   useAppSelector,
+  KeepAlive,
   useLocationListen,
-} from "@/common/hooks";
-import { getOperatingSystem, treeRouter } from "@/common/utils/common";
-import { Settings } from "@/config/defaultSetting";
-import { baseRouterList } from "@/routes";
+} from "hooks";
+import { getOperatingSystem, treeRouter } from "utils";
 
+// import { Settings } from "@/config/defaultSetting";
+// import { baseRouterList } from "@/routes";
+
+const Settings = {
+  title: "admin",
+  laod: "",
+};
+
+export const baseRouterList = [
+  {
+    label: "Dashboard",
+    key: "dashboard",
+    path: "dashboard",
+    icon: <DashboardOutlined />,
+    filepath: "pages/dashboard/index.tsx",
+  },
+];
 export default () => {
   const { user } = useAppSelector((state) => state);
   const navigate = useNavigate();

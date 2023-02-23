@@ -1,14 +1,10 @@
 import React, { Dispatch } from "react";
+import { setUserToken } from "store";
 
-import { sleep } from "@/common/utils/common";
-import { TOKEN } from "@/common/utils/contans";
-import { getStorage, removeStorage, setStorage } from "@/common/utils/storage";
-import { setUserToken } from "@/store/reducers/user";
+import { getStorage, removeStorage, setStorage, sleep, TOKEN } from "utils";
 
 interface AuthContextType {
-  // no-async-promise-executor
   signIn: (dispatch: Dispatch<any>, values: string) => Promise<unknown>;
-  // no-async-promise-executor
   signOut: (dispatch: Dispatch<any>) => Promise<unknown>;
 }
 

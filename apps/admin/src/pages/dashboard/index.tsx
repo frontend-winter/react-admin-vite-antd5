@@ -2,9 +2,8 @@ import { PageContainer } from "@ant-design/pro-layout";
 import { Avatar, Col, Row, Statistic } from "antd";
 import type { FC } from "react";
 
-import { currentTimeRange } from "@/common/utils/common";
-import Text from "@/components/Text";
-import { Header } from "ui";
+import { currentTimeRange } from "utils";
+import { Text } from "components";
 
 import styles from "./style.module.scss";
 
@@ -67,8 +66,6 @@ const Workplace: FC = () => {
       <Row gutter={24}>
         <Col xl={8} lg={24} md={24} sm={24} xs={24}>
           <Text>Hello word</Text>
-
-          <Header title={"123"} />
         </Col>
       </Row>
     </PageContainer>

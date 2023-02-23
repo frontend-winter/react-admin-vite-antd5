@@ -3,8 +3,7 @@ import { Avatar, Button, Checkbox, Form, Input } from "antd";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { AuthContext } from "@/common/context";
-import { useAppDispatch } from "@/common/hooks";
+import { AuthContext, useAppDispatch } from "hooks";
 import { Settings } from "@/config/defaultSetting";
 
 import styles from "./index.module.scss";

@@ -3,6 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   data: [],
 };
+/**
+ * @description commonSlice
+ */
 export const commonSlice = createSlice({
   name: "common",
   initialState: initialState,

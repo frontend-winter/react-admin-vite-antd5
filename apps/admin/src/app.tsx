@@ -4,16 +4,18 @@ import { cloneDeep } from "lodash";
 import { useEffect } from "react";
 import { useRoutes } from "react-router-dom";
 
-import { AuthContext, signIn, signOut } from "@/common/context";
 import {
+  AuthContext,
+  signIn,
+  signOut,
   useAppDispatch,
   useAppSelector,
   useLocationListen,
-} from "@/common/hooks";
+} from "hooks";
 import { MenuData } from "@/common/mock";
-import { ADMIN } from "@/common/utils/contans";
+import { ADMIN } from "utils";
 import { Settings } from "@/config/defaultSetting";
-import { setMenu } from "@/store/reducers/user";
+import { setMenu } from "store";
 
 import { defaultRoutes, filepathToElement } from "./routes";
 
@@ -27,13 +29,16 @@ function App() {
     ...filepathToElement(menu),
     ...cloneDefaultRoutes[0].children,
   ];
-  // console.log(cloneDefaultRoutes, "cloneDefaultRoutes");
+
   useLocationListen((r) => {
     document.title = `${Settings.title}: ${r.pathname.replace("/", "")}`;
   });
   const element = useRoutes(cloneDefaultRoutes);
   useEffect(() => {
-    // console.log(token, "token");
+    /**
+     * @deprecated 权限菜单控制
+     * 以下简单的示例展示管理员和普通用户的菜单渲染
+     */
     if ((token as unknown as { username: string })?.username === ADMIN) {
       dispatch(setMenu([...MenuData.admin]));
     } else {

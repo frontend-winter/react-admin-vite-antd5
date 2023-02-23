@@ -3,11 +3,10 @@ import { Alert, Button, Result, Spin } from "antd";
 import { lazy, Suspense } from "react";
 import { Link, Navigate } from "react-router-dom";
 
-import { TOKEN } from "@/common/utils/contans";
-import { getStorage } from "@/common/utils/storage";
-import Layout from "@/components/Layout";
-import { MenuItem } from "@/components/Layout/layout";
-import OutletLayoutRouter from "@/components/OutletLayoutRouter";
+import { TOKEN, getStorage } from "utils";
+// import Layout from "@/components/Layout";
+import { Layout, OutletLayoutRouter } from "components";
+import type { MenuItem } from "components";
 import Dashboard from "@/pages/dashboard";
 import ErrorPage from "@/pages/error-page";
 import Login from "@/pages/login";

@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { TOKEN } from "@/common/utils/contans";
-import { getStorage } from "@/common/utils/storage";
-import { MenuItem } from "@/components/Layout/layout";
+import { TOKEN } from "utils";
+import { getStorage } from "utils";
+// import { MenuItem } from "@/components/Layout/layout";
 
 export interface IUserInitialState {
   role: string[];
   token: string;
-  menu: MenuItem[];
+  menu: any[];
   [key: string]: any;
 }
 

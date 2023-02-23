@@ -142,8 +142,8 @@ export default () => {
       columns={columns}
       actionRef={actionRef}
       cardBordered
-      request={async (params = {}, sort, filter) => {
-        console.log(sort, filter);
+      request={async (params = {} /*sort, filter*/) => {
+        // console.log(sort, filter);
         return request<{
           data: GithubIssueItem[];
         }>("https://proapi.azurewebsites.net/github/issues", {

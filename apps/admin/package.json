@@ -10,6 +10,11 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf build"
   },
   "dependencies": {
+    "ui": "workspace:*",
+    "components": "workspace:*",
+    "hooks": "workspace:*",
+    "utils": "workspace:*",
+    "store": "workspace:*",
     "@ant-design/icons": "^4.8.0",
     "@ant-design/pro-components": "^2.3.52",
     "@ant-design/pro-layout": "^7.6.1",
@@ -29,7 +34,6 @@
     "react-transition-group": "^4.4.5",
     "redux": "^4.2.0",
     "sass": "^1.56.1",
-    "ui": "workspace:*",
     "umi-request": "^1.4.0"
   },
   "devDependencies": {

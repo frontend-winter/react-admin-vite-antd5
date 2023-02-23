@@ -1,6 +1,6 @@
 import React from "react";
 
-import Text from "@/components/Text";
+import { Text } from "components";
 
 function UserManagement() {
   return (

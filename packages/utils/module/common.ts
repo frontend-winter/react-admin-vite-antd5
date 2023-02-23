@@ -1,10 +1,11 @@
-import { MenuItem } from "@/components/Layout/layout";
+// import { MenuItem } from "@/components/Layout/layout";
 
 /**
  * @description sleep
  * @param {number} time
  */
 const sleep = (time: number | undefined) =>
+  // @ts-ignore
   new Promise<void>((resolve) => {
     setTimeout(() => {
       resolve();
@@ -58,7 +59,7 @@ const isMobile = () => {
   return mobile_flag;
 };
 
-export const treeRouter = (list: MenuItem[]) => {
+export const treeRouter = (list: any[]) => {
   return list.map((item) => {
     return {
       path: item.path,

@@ -4,7 +4,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 
-import { MenuItem } from "@/components/Layout/layout";
+import { MenuItem } from "components";
 
 export const MenuData: {
   user: MenuItem[];
