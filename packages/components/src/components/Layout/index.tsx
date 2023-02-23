@@ -18,6 +18,7 @@ import { Input, Switch, Tooltip } from "antd";
 import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Settings } from "utils";
 
 import {
   AuthContext,
@@ -30,11 +31,6 @@ import { getOperatingSystem, treeRouter } from "utils";
 
 // import { Settings } from "@/config/defaultSetting";
 // import { baseRouterList } from "@/routes";
-
-const Settings = {
-  title: "admin",
-  laod: "",
-};
 
 export const baseRouterList = [
   {

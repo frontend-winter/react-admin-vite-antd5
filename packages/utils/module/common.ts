@@ -1,4 +1,12 @@
-// import { MenuItem } from "@/components/Layout/layout";
+export interface MenuItem {
+  label: string;
+  key: string;
+  path: string;
+  filepath: string;
+  icon?: any;
+  children?: MenuItem[];
+  // element?: { element: () => Promise<{ [key: string]: any }> };
+}
 
 /**
  * @description sleep
@@ -59,7 +67,7 @@ const isMobile = () => {
   return mobile_flag;
 };
 
-export const treeRouter = (list: any[]) => {
+export const treeRouter = (list: MenuItem[]) => {
   return list.map((item) => {
     return {
       path: item.path,

@@ -22,16 +22,13 @@ importers:
       "@ant-design/pro-layout": ^7.6.1
       "@babel/core": "7"
       "@emotion/css": ^11.10.5
-      "@reduxjs/toolkit": ^1.9.1
       "@types/lodash": ^4.14.190
       "@types/node": ^18.0.0
       "@types/react": ^18.0.14
       "@types/react-dom": ^18.0.5
-      "@types/redux-logger": ^3.0.9
       "@vitejs/plugin-react": ^2.2.0
       antd: ^5.0.1
       components: workspace:*
-      crypto-js: ^4.1.1
       dayjs: ^1.11.6
       eslint-config-custom: workspace:*
       hooks: workspace:*
@@ -40,10 +37,8 @@ importers:
       rc-texty: ^0.2.0
       react: ^18.2.0
       react-dom: ^18.2.0
-      react-redux: ^8.0.5
       react-router-dom: ^6.4.3
       react-transition-group: ^4.4.5
-      redux: ^4.2.0
       redux-devtools-extension: ^2.13.9
       sass: ^1.56.1
       start-server-and-test: ^1.14.0
@@ -61,8 +56,6 @@ importers:
       "@ant-design/pro-layout": 7.8.2_igx3fjqfaa2k6sdzqet3ckos64
       "@babel/core": 7.21.0
       "@emotion/css": 11.10.6
-      "@reduxjs/toolkit": 1.9.3_k4ae6lp43ej6mezo3ztvx6pykq
-      "@types/redux-logger": 3.0.9
       antd: 5.2.2_biqbaboplfbrettd7655fr4n2y
       components: link:../../packages/components
       dayjs: 1.11.7
@@ -72,10 +65,8 @@ importers:
       rc-texty: 0.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      react-redux: 8.0.5_ctrls2ti7t7iutxbwkm5ipogyy
       react-router-dom: 6.8.1_biqbaboplfbrettd7655fr4n2y
       react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
-      redux: 4.2.1
       sass: 1.58.3
       store: link:../../packages/store
       ui: link:../../packages/ui
@@ -87,7 +78,6 @@ importers:
       "@types/react": 18.0.28
       "@types/react-dom": 18.0.11
       "@vitejs/plugin-react": 2.2.0_vite@4.1.4
-      crypto-js: 4.1.1
       eslint-config-custom: link:../../packages/eslint-config-custom
       redux-devtools-extension: 2.13.9_redux@4.2.1
       start-server-and-test: 1.15.4
@@ -1847,6 +1837,7 @@ packages:
       }
     dependencies:
       "@types/react": 18.0.28
+    dev: true
 
   /@types/react/18.0.28:
     resolution:
@@ -1857,15 +1848,6 @@ packages:
       "@types/prop-types": 15.7.5
       "@types/scheduler": 0.16.2
       csstype: 3.1.1
-
-  /@types/redux-logger/3.0.9:
-    resolution:
-      {
-        integrity: sha512-cwYhVbYNgH01aepeMwhd0ABX6fhVB2rcQ9m80u8Fl50ZODhsZ8RhQArnLTkE7/Zrfq4Sz/taNoF7DQy9pCZSKg==,
-      }
-    dependencies:
-      redux: 4.2.1
-    dev: false
 
   /@types/scheduler/0.16.2:
     resolution:
@@ -2552,6 +2534,7 @@ packages:
       {
         integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==,
       }
+    dev: false
 
   /csstype/3.1.1:
     resolution:
@@ -4691,43 +4674,6 @@ packages:
       {
         integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==,
       }
-    dev: false
-
-  /react-redux/8.0.5_ctrls2ti7t7iutxbwkm5ipogyy:
-    resolution:
-      {
-        integrity: sha512-Q2f6fCKxPFpkXt1qNRZdEDLlScsDWyrgSj0mliK59qU6W5gvBiKkdMEG2lJzhd1rCctf0hb6EtePPLZ2e0m1uw==,
-      }
-    peerDependencies:
-      "@types/react": ^16.8 || ^17.0 || ^18.0
-      "@types/react-dom": ^16.8 || ^17.0 || ^18.0
-      react: ^16.8 || ^17.0 || ^18.0
-      react-dom: ^16.8 || ^17.0 || ^18.0
-      react-native: ">=0.59"
-      redux: ^4
-    peerDependenciesMeta:
-      "@types/react":
-        optional: true
-      "@types/react-dom":
-        optional: true
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-      redux:
-        optional: true
-    dependencies:
-      "@babel/runtime": 7.21.0
-      "@types/hoist-non-react-statics": 3.3.1
-      "@types/react": 18.0.28
-      "@types/react-dom": 18.0.11
-      "@types/use-sync-external-store": 0.0.3
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      react-is: 18.2.0
-      redux: 4.2.1
-      use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
   /react-redux/8.0.5_react@18.2.0+redux@4.2.1:
