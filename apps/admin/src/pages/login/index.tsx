@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AuthContext, useAppDispatch } from "hooks";
-import { Settings } from "@/config/defaultSetting";
+import { Settings } from "utils";
 
 import styles from "./index.module.scss";
 

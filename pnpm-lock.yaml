@@ -161,7 +161,6 @@ importers:
       "@reduxjs/toolkit": ^1.9.1
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
-      immutable: ^4.2.4
       react-redux: ^8.0.5
       redux: ^4.2.0
       tsconfig: workspace:*
@@ -169,7 +168,6 @@ importers:
       utils: workspace:*
     dependencies:
       "@reduxjs/toolkit": 1.9.3_k4ae6lp43ej6mezo3ztvx6pykq
-      immutable: 4.2.4
       react-redux: 8.0.5_react@18.2.0+redux@4.2.1
       redux: 4.2.1
       utils: link:../utils
@@ -202,6 +200,7 @@ importers:
 
   packages/utils:
     specifiers:
+      "@types/node": ^18.0.0
       crypto-js: ^4.1.1
       eslint: ^7.32.0
       eslint-config-custom: workspace:*
@@ -210,6 +209,7 @@ importers:
     dependencies:
       crypto-js: 4.1.1
     devDependencies:
+      "@types/node": 18.14.0
       eslint: 7.32.0
       eslint-config-custom: link:../eslint-config-custom
       tsconfig: link:../tsconfig

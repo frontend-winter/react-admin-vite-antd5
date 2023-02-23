@@ -7,9 +7,10 @@
  * Desc: 对本地存储进行封装, 命名规范、设置过期时间、安全加密
  */
 
+// @ts-ignore
 import CryptoJS from "crypto-js";
 
-import { Settings } from "@/config/defaultSetting";
+import { Settings } from "./contans";
 
 // 十六位十六进制数作为密钥
 const SECRET_KEY = CryptoJS.enc.Utf8.parse("3333e6e143439161");

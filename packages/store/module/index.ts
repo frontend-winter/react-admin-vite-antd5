@@ -5,35 +5,16 @@ import {
   useDispatch,
 } from "react-redux";
 
-import * as Iterable from "immutable";
-
-import {
-  configureStore,
-  createSerializableStateInvariantMiddleware,
-  isPlain,
-} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 import common, { setData } from "./reducers/common";
 import user, { setMenu, setUserToken } from "./reducers/user";
-
-// Augment middleware to consider Immutable.JS iterables serializable
-const isSerializable = (value: any) =>
-  Iterable.isImmutable(value) || isPlain(value);
-
-const getEntries = (value: any) =>
-  Iterable.isImmutable(value) ? value.entries() : Object.entries(value);
-
-const serializableMiddleware = createSerializableStateInvariantMiddleware({
-  isSerializable,
-  getEntries,
-});
 
 const store = configureStore({
   reducer: {
     user,
     common,
   },
-  middleware: [serializableMiddleware],
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

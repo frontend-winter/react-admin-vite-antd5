@@ -1,4 +1,4 @@
-import Header from "./components/header";
+import Button from "./components/Button";
 
 // components
-export { Header };
+export { Button };

@@ -111,7 +111,8 @@ export default () => {
             },
           ]}
           avatarProps={{
-            src: "https://joeschmoe.io/api/v1/random",
+            // src: "https://joeschmoe.io/api/v1/random",
+            src: Settings.logo,
             size: "small",
             title: (
               <div>
