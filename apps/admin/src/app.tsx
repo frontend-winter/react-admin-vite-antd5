@@ -40,7 +40,6 @@ function App() {
      * 以下简单的示例展示管理员和普通用户的菜单渲染
      */
     if ((token as unknown as { username: string })?.username === ADMIN) {
-      // dispatch(setMenu([...MenuData.admin]));
       dispatch(setMenu([...MenuData.admin]));
     } else {
       dispatch(setMenu([...MenuData.user]));

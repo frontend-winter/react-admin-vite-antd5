@@ -15,6 +15,15 @@ const store = configureStore({
     user,
     common,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these action types
+        ignoredActions: ["user/setMenu"],
+        // Ignore these paths in the state
+        ignoredPaths: ["user"],
+      },
+    }),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
