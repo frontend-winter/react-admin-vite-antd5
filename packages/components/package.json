@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint \"**/*.ts\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf build"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

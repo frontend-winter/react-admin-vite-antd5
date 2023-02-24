@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -rf build"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.30.7",
