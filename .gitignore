@@ -4,6 +4,9 @@
 .turbo/
 data/
 dist/
+
+apps/admin/react-admin-vite-antd5
+
 node_modules/
 target/
 tests_output/
