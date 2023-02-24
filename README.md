@@ -4,9 +4,9 @@
 
 ## 代码简介，致力打造成一个标准的模版，可直接用于生产环境开发。
 
-# 使用 Monorepo 管理项目
+# 使用 `Monorepo` 管理项目
 
-## 为什么使用 Monorepo
+## 为什么使用 `Monorepo`
 
 随着研发代码的增多, 工程日益复杂，代码复用和版本管理显得格外的繁琐，版本升级没有日志，相互依赖的包需要手动管理版本，以往的组件库独立开发的方式并没有很好的区分组件和组件之间的关系，往往只需要一种类型的组件，例如图表，但还是不得不安装一整个组件库，并没有很好的对组件进行区分，如哪些是图表组件，哪些是功能组件，哪些是业务组件等，造成组件库越来越大，编译打包效率降低，每次一个小改动就不得不直接发布一整个包预览效果，且无法支持本地调试等以下相关痛点。
 
@@ -14,10 +14,10 @@
 - 业务开发分工不明确，业务开发人员要关心非业务的代码
 - 编译慢，效率低
 - 无法对应用做增量编译&增量部署
-- 相关包基础依赖可能会重复打包，如： lodash,moment...
-- 管理、调试、追踪 bug 困难
-- 不同项目之间 node、node-sass、webpack 等基础依赖版本不统一，切换增加心智负担。
-- 不同项目可能存在技术栈不统一，如：状态管理，less,sass
+- 相关包基础依赖可能会重复打包，如： `lodash`,`moment`...
+- 管理、调试、追踪 `bug` 困难
+- 不同项目之间 `node`、`node-sass`、`webpack` 等基础依赖版本不统一，切换增加心智负担。
+- 不同项目可能存在技术栈不统一，如：状态管理，`less`,`sass`
 - 分支管理混乱
 - 多包多项目之间依赖关系复杂
 - 第三方依赖库版本可能不一致
@@ -27,9 +27,9 @@
 - 需要频繁切换项目
 - 搭建独立的文档系统和其他子应用时，相关依赖又要单独管理，又有上述的症状
 
-针对上述问题我们引入了 Monorepo 的概念，把以往的单一组件库拆分为职责更细化的包，架构更清晰，解耦，子应用隔离。
+针对上述问题我们引入了 `Monorepo` 的概念，把以往的单一组件库拆分为职责更细化的包，架构更清晰，解耦，子应用隔离。
 
-- 我们所有的包管理都强制使用[pnpm](https://pnpm.io/zh/motivation)，在 monorepo 架构之上，pnpm 能极大发挥他的作用(设计初期就很好的考虑了当前复杂项目的痛点)，相比 yarn 和 npm，pnpm 能节约磁盘空间并提升安装速度，切避免了关于深度嵌套包的一些意外情况，如果你还没有接触了解过 pnpm,可以看看[相关文章](https://zhuanlan.zhihu.com/p/377593512), 而且当前已有众多[前端团队](https://pnpm.io/zh/users)和大部分主流开源项目抛弃 npm,yarn，开始接入 pnpm。
+- 我们所有的包管理都强制使用[pnpm](https://pnpm.io/zh/motivation)，在 `monorepo` 架构之上，`pnpm` 能极大发挥他的作用(设计初期就很好的考虑了当前复杂项目的痛点)，相比 `yarn` 和 `npm`，`pnpm` 能节约磁盘空间并提升安装速度，切避免了关于深度嵌套包的一些意外情况，如果你还没有接触了解过 `pnpm`,可以看看[相关文章](https://zhuanlan.zhihu.com/p/377593512), 而且当前已有众多[前端团队](https://pnpm.io/zh/users)和大部分主流开源项目抛弃 `npm`,`yarn`，开始接入 `pnpm`。
 - [精读《Monorepo 的优势》](https://zhuanlan.zhihu.com/p/65533186)
 - [现代化前端应用为什么越来越离不开 Monorepo](https://juejin.cn/post/6944877410827370504)
 - [参考](https://turbo.build/repo/docs/core-concepts/monorepos)
@@ -43,7 +43,7 @@
 
 ## 相关技术栈
 
-- react，react18，vite，vite3，antd，antd5.x，ts，typescript，redux，react-redux，@reduxjs/toolkit。
+- `react`，`react18`，`vite`，`vite3`，`antd`，`antd5.x`，`ts`，`typescript`，`redux`，`react-redux`，`@reduxjs/toolkit`
 - [Monorepo](https://turbo.build/repo/docs)
 - [ReactJS](https://reactjs.org)
 - [Vite](https://vitejs.dev)
@@ -124,9 +124,31 @@
   pnpm build:sit
   ```
 
+### 推荐使用`NGINX`部署
+
+```bash
+# 后台管理模板
+location ^~ /react-admin-vite-antd5{
+  index index.html;
+
+  if ($request_uri ~* .*[.](js|css|map|jpg|png|svg|ico)$) {
+    #设置过期时间120秒，120秒过后向服务器重新请求数据
+    add_header Cache-Control max-age=120;
+  }
+
+  if ($request_filename ~* ^.*[.](html|htm)$) {
+    add_header Cache-Control "public, no-cache";
+    #html文件协商缓存，也就是每次都询问服务器，浏览器本地是是否是最新的，是最新的就直接用，非最新的服务器就会返回最新
+  }
+
+
+  try_files $uri $uri/ /react-admin-vite-antd5/index.html;
+}
+```
+
 ### 校验代码 格式化代码
 
-- 提交代码会执行
+- 提交代码自动执行
 
 ```bash
 pnpm run lint && pnpm run format
