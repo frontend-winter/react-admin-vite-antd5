@@ -87,6 +87,45 @@ importers:
       vite: 4.1.4_435aevtanapkguv7m72cl6trbi
       vite-plugin-compression: 0.5.1_vite@4.1.4
 
+  apps/demo:
+    specifiers:
+      '@ant-design/icons': ^4.8.0
+      '@ant-design/pro-components': ^2.3.52
+      '@types/react': ^18.0.28
+      '@types/react-dom': ^18.0.11
+      '@vitejs/plugin-react': ^2.2.0
+      antd: ^5.0.1
+      eslint: ^7.32.0
+      eslint-config-custom: workspace:*
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-router-dom: ^6.8.1
+      tsconfig: workspace:*
+      typescript: ^4.9.4
+      ui: workspace:*
+      umi-request: ^1.4.0
+      vite: ^4.0.3
+      vite-plugin-compression: ^0.5.1
+    dependencies:
+      '@ant-design/icons': 4.8.0_biqbaboplfbrettd7655fr4n2y
+      '@ant-design/pro-components': 2.3.57_edhi5adohw754c63pvhul3b4vi
+      antd: 5.2.2_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router-dom: 6.8.1_biqbaboplfbrettd7655fr4n2y
+      ui: link:../../packages/ui
+      umi-request: 1.4.0
+    devDependencies:
+      '@types/react': 18.0.28
+      '@types/react-dom': 18.0.11
+      '@vitejs/plugin-react': 2.2.0_vite@4.1.4
+      eslint: 7.32.0
+      eslint-config-custom: link:../../packages/eslint-config-custom
+      tsconfig: link:../../packages/tsconfig
+      typescript: 4.9.5
+      vite: 4.1.4
+      vite-plugin-compression: 0.5.1_vite@4.1.4
+
   packages/components:
     specifiers:
       '@ant-design/icons': ^4.8.0
@@ -1687,7 +1726,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.21.0
       magic-string: 0.26.7
       react-refresh: 0.14.0
-      vite: 4.1.4_435aevtanapkguv7m72cl6trbi
+      vite: 4.1.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4297,9 +4336,42 @@ packages:
       chalk: 4.1.2
       debug: 4.3.4
       fs-extra: 10.1.0
-      vite: 4.1.4_435aevtanapkguv7m72cl6trbi
+      vite: 4.1.4
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vite/4.1.4:
+    resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.16.17
+      postcss: 8.4.21
+      resolve: 1.22.1
+      rollup: 3.17.2
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /vite/4.1.4_435aevtanapkguv7m72cl6trbi:

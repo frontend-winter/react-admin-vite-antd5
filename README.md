@@ -1,4 +1,4 @@
-# 一个`React`+`Monorepo`搭建的后台管理模板，在线预览https://hzdjs.cn/react-admin-vite-antd5
+# 一个`React`+`Monorepo`搭建的后台管理模板「admin template」，在线预览https://hzdjs.cn/react-admin-vite-antd5
 
 ## 支持`vite`生成动态路由，支持路由`keepalive`功能。
 

@@ -104,14 +104,13 @@ export default () => {
           }}
           appList={[
             {
-              icon: "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+              icon: Settings.logo,
               title: "Blog",
               desc: "hzdjs.cn",
               url: "https://hzdjs.cn",
             },
           ]}
           avatarProps={{
-            // src: "https://joeschmoe.io/api/v1/random",
             src: Settings.logo,
             size: "small",
             title: (
