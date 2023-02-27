@@ -1,14 +1,27 @@
+# react admin [react - ts - vite - template]
+
 # 一个`React`+`Monorepo`搭建的后台管理模板「admin template」，在线预览https://hzdjs.cn/react-admin-vite-antd5
 
-## 支持`vite`生成动态路由，支持路由`keepalive`功能。
+## 支持`vite`生成动态路由，支持路由`keepalive`功能
 
-## 代码简介，致力打造成一个标准的模版，可直接用于生产环境开发。
+## 代码简介，致力打造成一个标准的模版，可直接用于生产环境开发
 
-# 使用 `Monorepo` 管理项目
+#演示
 
-## 为什么使用 `Monorepo`
+- https://hzdjs.cn/react-admin-vite-antd5
+- 账户 admin/user， 密码 任意密码
+- 登录
+  ![img_1.png](img_1.png)
+- 首页
+  ![img.png](img.png)
+- 暗黑主题
+  ![img_2.png](img_2.png)
 
-随着研发代码的增多, 工程日益复杂，代码复用和版本管理显得格外的繁琐，版本升级没有日志，相互依赖的包需要手动管理版本，以往的组件库独立开发的方式并没有很好的区分组件和组件之间的关系，往往只需要一种类型的组件，例如图表，但还是不得不安装一整个组件库，并没有很好的对组件进行区分，如哪些是图表组件，哪些是功能组件，哪些是业务组件等，造成组件库越来越大，编译打包效率降低，每次一个小改动就不得不直接发布一整个包预览效果，且无法支持本地调试等以下相关痛点。
+# `Monorepo` 管理项目
+
+## 为什么使用
+
+随着研发代码的增多, 工程日益复杂，代码复用和版本管理显得格外的繁琐，版本升级没有日志，相互依赖的包需要手动管理版本，以往的组件库独立开发的方式并没有很好的区分组件和组件之间的关系，往往只需要一种类型的组件，例如图表，但还是不得不安装一整个组件库，并没有很好的对组件进行区分，如哪些是图表组件，哪些是功能组件，哪些是业务组件等，造成组件库越来越大，编译打包效率降低，每次一个小改动就不得不直接发布一整个包预览效果，且无法支持本地调试等以下相关痛点
 
 - 组件耦合严重，组件代码量大
 - 业务开发分工不明确，业务开发人员要关心非业务的代码
@@ -16,7 +29,7 @@
 - 无法对应用做增量编译&增量部署
 - 相关包基础依赖可能会重复打包，如： `lodash`,`moment`...
 - 管理、调试、追踪 `bug` 困难
-- 不同项目之间 `node`、`node-sass`、`webpack` 等基础依赖版本不统一，切换增加心智负担。
+- 不同项目之间 `node`、`node-sass`、`webpack` 等基础依赖版本不统一，切换增加心智负担
 - 不同项目可能存在技术栈不统一，如：状态管理，`less`,`sass`
 - 分支管理混乱
 - 多包多项目之间依赖关系复杂
@@ -26,10 +39,8 @@
 - 无法针对主应用统一跑测试用例,发布时很难避免一些基本的错误发生
 - 需要频繁切换项目
 - 搭建独立的文档系统和其他子应用时，相关依赖又要单独管理，又有上述的症状
-
-针对上述问题我们引入了 `Monorepo` 的概念，把以往的单一组件库拆分为职责更细化的包，架构更清晰，解耦，子应用隔离。
-
-- 我们所有的包管理都强制使用[pnpm](https://pnpm.io/zh/motivation)，在 `monorepo` 架构之上，`pnpm` 能极大发挥他的作用(设计初期就很好的考虑了当前复杂项目的痛点)，相比 `yarn` 和 `npm`，`pnpm` 能节约磁盘空间并提升安装速度，切避免了关于深度嵌套包的一些意外情况，如果你还没有接触了解过 `pnpm`,可以看看[相关文章](https://zhuanlan.zhihu.com/p/377593512), 而且当前已有众多[前端团队](https://pnpm.io/zh/users)和大部分主流开源项目抛弃 `npm`,`yarn`，开始接入 `pnpm`。
+  针对上述问题我们引入了 `Monorepo` 的概念，把以往的单一组件库拆分为职责更细化的包，架构更清晰，解耦，子应用隔离
+- 我们所有的包管理都强制使用[pnpm](https://pnpm.io/zh/motivation)，在 `monorepo` 架构之上，`pnpm` 能极大发挥他的作用(设计初期就很好的考虑了当前复杂项目的痛点)，相比 `yarn` 和 `npm`，`pnpm` 能节约磁盘空间并提升安装速度，切避免了关于深度嵌套包的一些意外情况，如果你还没有接触了解过 `pnpm`,可以看看[相关文章](https://zhuanlan.zhihu.com/p/377593512), 而且当前已有众多[前端团队](https://pnpm.io/zh/users)和大部分主流开源项目抛弃 `npm`,`yarn`，开始接入 `pnpm`
 - [精读《Monorepo 的优势》](https://zhuanlan.zhihu.com/p/65533186)
 - [现代化前端应用为什么越来越离不开 Monorepo](https://juejin.cn/post/6944877410827370504)
 - [参考](https://turbo.build/repo/docs/core-concepts/monorepos)
@@ -72,6 +83,33 @@
 
 ### 推荐使用 webstrom vscode 开发
 
+### 代码目录结构
+
+- 使用库生成 `treer`
+- 生成 `treer -e ./result.txt -i '/node_modules|.git/'`
+
+```markdown
+react-admin-vite-antd5
+├─packages // 公共包存放路径
+| ├─utils // 公共工具
+| ├─ui // ui 组件库
+| ├─store // 全局状态管理
+| ├─hooks // 公共 hooks
+| ├─eslint-config-custom // 全局 eslint
+| ├─components // 公共业务组件
+├─apps // 项目存放路径
+| ├─demo // 示例项目
+| ├─admin // 后台管理 app
+| | ├─src // 主文件
+| | | ├─routes // 路由
+| | | ├─pages // 页面
+| | | ├─components // 组件
+| | | ├─common // 公共资源
+| | | ├─assets 静态资源
+| | ├─react-admin-vite-antd5 // 打包出口
+├─.husky // 代码提交脚本
+```
+
 ### 包划分
 
 - [components](components) 存放功能性组件，更偏向系统功能，比如`Layout`公共布局组件
@@ -85,29 +123,21 @@
 ### 开始
 
 1. 创建项目
-
    ```bash
    git clone https://github.com/frontend-winter/react-admin-vite-antd5
    ```
-
 2. 访问项目目录
-
    ```bash
    cd react-admin-vite-antd5
    ```
-
 3. git 初始化项目
-
    ```bash
    git init
    ```
-
 4. 安装依赖包
-
    ```bash
    pnpm install
    ```
-
 5. 启动项目，访问链接：http://localhost:5793
    ```bash
    pnpm run dev
@@ -124,7 +154,9 @@
   pnpm build:sit
   ```
 
-### 推荐使用`NGINX`部署
+### 推荐使用`nginx`部署
+
+- config 如下
 
 ```bash
 # 后台管理模板
