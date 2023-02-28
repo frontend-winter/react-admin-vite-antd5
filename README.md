@@ -203,6 +203,7 @@ pnpm run lint && pnpm run format
 
 This project is licensed under the MIT License. .
 
-## juejin
+## 第三方
 
-    https://juejin.cn/post/7204670801245143098
+[掘金](https://juejin.cn/post/7204670801245143098)
+[知乎](https://zhuanlan.zhihu.com/p/609803432)
