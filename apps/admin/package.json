@@ -29,7 +29,7 @@
     "sass": "^1.56.1",
     "store": "workspace:*",
     "ui": "workspace:*",
-    "umi-request": "^1.4.0",
+    "apis": "workspace:*",
     "utils": "workspace:*"
   },
   "devDependencies": {

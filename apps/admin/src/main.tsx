@@ -19,8 +19,6 @@ root.render(
       <ConfigProvider
         theme={{
           token: {
-            borderRadius: 4,
-            fontSize: 14,
             colorPrimary: 'pink',
           },
         }}

@@ -3,25 +3,10 @@ import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import { ProTable, TableDropdown } from '@ant-design/pro-components';
 import { Button, Dropdown, Space, Tag } from 'antd';
 import { useRef } from 'react';
-import request from 'umi-request';
+import { getGithubIssueItem } from 'apis';
+import type { AdminApi } from 'apis';
 
-type GithubIssueItem = {
-  url: string;
-  id: number;
-  number: number;
-  title: string;
-  labels: {
-    name: string;
-    color: string;
-  }[];
-  state: string;
-  comments: number;
-  created_at: string;
-  updated_at: string;
-  closed_at?: string;
-};
-
-const columns: ProColumns<GithubIssueItem>[] = [
+const columns: ProColumns<AdminApi.GithubIssueItem>[] = [
   {
     dataIndex: 'index',
     valueType: 'indexBorder',
@@ -138,17 +123,18 @@ const columns: ProColumns<GithubIssueItem>[] = [
 export default () => {
   const actionRef = useRef<ActionType>();
   return (
-    <ProTable<GithubIssueItem>
+    <ProTable<AdminApi.GithubIssueItem>
       columns={columns}
       actionRef={actionRef}
       cardBordered
       request={async (params = {} /*sort, filter*/) => {
         // console.log(sort, filter);
-        return request<{
-          data: GithubIssueItem[];
-        }>('https://proapi.azurewebsites.net/github/issues', {
-          params,
-        });
+        // return request<{
+        //   data: GithubIssueItem[];
+        // }>('https://proapi.azurewebsites.net/github/issues', {
+        //   params,
+        // });
+        return await getGithubIssueItem(params as AdminApi.IGetGithubIssueItemType);
       }}
       editable={{
         type: 'multiple',
