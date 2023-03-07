@@ -207,3 +207,10 @@ This project is licensed under the MIT License. .
 
 [掘金](https://juejin.cn/post/7204670801245143098)
 [知乎](https://zhuanlan.zhihu.com/p/609803432)
+
+## 进行中或者计划中的
+
+- 添加 API 子 packages
+- Feature 国际化支持 i18
+- 微前端集成
+- ...
