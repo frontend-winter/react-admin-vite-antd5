@@ -1,15 +1,15 @@
-import { DashboardOutlined } from "@ant-design/icons";
-import { Alert, Button, Result, Spin } from "antd";
-import { lazy, Suspense } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { DashboardOutlined } from '@ant-design/icons';
+import { Alert, Button, Result, Spin } from 'antd';
+import { lazy, Suspense } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 
-import { TOKEN, getStorage } from "utils";
+import { TOKEN, getStorage } from 'utils';
 // import Layout from "@/components/Layout";
-import { Layout, OutletLayoutRouter } from "components";
-import type { MenuItem } from "components";
-import Dashboard from "@/pages/dashboard";
-import ErrorPage from "@/pages/error-page";
-import Login from "@/pages/login";
+import { Layout, OutletLayoutRouter } from 'components';
+import type { MenuItem } from 'components';
+import Dashboard from '@/pages/dashboard';
+import ErrorPage from '@/pages/error-page';
+import Login from '@/pages/login';
 
 const Permissions = ({ children }: any) => {
   const token = getStorage(TOKEN);
@@ -18,30 +18,30 @@ const Permissions = ({ children }: any) => {
 
 export const baseRouterList = [
   {
-    label: "Dashboard",
-    key: "dashboard",
-    path: "dashboard",
+    label: 'Dashboard',
+    key: 'dashboard',
+    path: 'dashboard',
     icon: <DashboardOutlined />,
-    filepath: "pages/dashboard/index.tsx",
+    filepath: 'pages/dashboard/index.tsx',
   },
 ];
 
 export const defaultRoutes: any = [
   {
-    path: "/",
+    path: '/',
     element: <Permissions>{<Layout />}</Permissions>,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Navigate to="dashboard" />,
       },
       {
-        path: "dashboard",
+        path: 'dashboard',
         element: <Dashboard />,
       },
       {
-        path: "/*",
+        path: '/*',
         element: (
           <ErrorPage>
             <Result
@@ -49,7 +49,7 @@ export const defaultRoutes: any = [
               title="404"
               subTitle="Sorry, the page you visited does not exist."
               extra={
-                <Link to={"/"}>
+                <Link to={'/'}>
                   <Button type="primary">Back Home</Button>
                 </Link>
               }
@@ -60,13 +60,13 @@ export const defaultRoutes: any = [
     ],
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
   },
 ];
 
 // /**/ 表示二级目录 一般二级目录就够了  不够在加即可
-export const modules = import.meta.glob("../pages/**/*.tsx");
+export const modules = import.meta.glob('../pages/**/*.tsx');
 
 function pathToLazyComponent(Ele: string) {
   const path = modules[`../${Ele}`] as any;
@@ -74,10 +74,7 @@ function pathToLazyComponent(Ele: string) {
     return (
       <ErrorPage>
         <Alert
-          message={
-            Ele +
-            ":Cannot find the path, please configure the correct folder path"
-          }
+          message={Ele + ':Cannot find the path, please configure the correct folder path'}
           type="error"
         />
       </ErrorPage>

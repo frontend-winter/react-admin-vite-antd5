@@ -1,27 +1,27 @@
-import "./main.css";
+import './main.css';
 
-import { ConfigProvider } from "antd";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { ConfigProvider } from 'antd';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
-import App from "./app";
+import App from './app';
 // import store from "./store";
-import { store, Provider } from "store";
+import { store, Provider } from 'store';
 
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 const root = createRoot(container as HTMLDivElement);
 root.render(
   <Provider store={store}>
     <BrowserRouter
       // 生产环境配置二级路径
-      basename={"/" + import.meta.env.BASE_URL.replaceAll("/", "")}
+      basename={'/' + import.meta.env.BASE_URL.replaceAll('/', '')}
     >
       <ConfigProvider
         theme={{
           token: {
             borderRadius: 4,
             fontSize: 14,
-            colorPrimary: "pink",
+            colorPrimary: 'pink',
           },
         }}
       >

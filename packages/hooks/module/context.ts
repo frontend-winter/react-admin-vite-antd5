@@ -1,7 +1,7 @@
-import React, { Dispatch } from "react";
-import { setUserToken } from "store";
+import React, { Dispatch } from 'react';
+import { setUserToken } from 'store';
 
-import { getStorage, removeStorage, setStorage, sleep, TOKEN } from "utils";
+import { getStorage, removeStorage, setStorage, sleep, TOKEN } from 'utils';
 
 interface AuthContextType {
   signIn: (dispatch: Dispatch<any>, values: string) => Promise<unknown>;
@@ -18,9 +18,9 @@ export const signOut = (dispatch: any) => {
   return new Promise((resolve) => {
     try {
       removeStorage(TOKEN);
-      dispatch(setUserToken(""));
+      dispatch(setUserToken(''));
     } finally {
-      resolve("");
+      resolve('');
     }
   });
 };

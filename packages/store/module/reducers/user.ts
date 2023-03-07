@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-import { TOKEN } from "utils";
-import { getStorage } from "utils";
+import { TOKEN } from 'utils';
+import { getStorage } from 'utils';
 // import { MenuItem } from "@/components/Layout/layout";
 
 export interface IUserInitialState {
@@ -17,12 +17,12 @@ export interface Type {
 // 默认状态
 const initialState: IUserInitialState = {
   role: [],
-  token: getStorage(TOKEN) ?? "",
+  token: getStorage(TOKEN) ?? '',
   menu: [],
 };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState: initialState,
   reducers: {
     setUserToken: (state, action) => {

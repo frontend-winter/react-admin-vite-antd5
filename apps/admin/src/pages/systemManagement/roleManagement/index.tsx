@@ -1,4 +1,4 @@
-import { Text } from "components";
+import { Text } from 'components';
 
 function RoleManagement() {
   return (

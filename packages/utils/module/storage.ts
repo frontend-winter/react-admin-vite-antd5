@@ -8,53 +8,49 @@
  */
 
 // @ts-ignore
-import CryptoJS from "crypto-js";
+import CryptoJS from 'crypto-js';
 
-import { Settings } from "./contans";
+import { Settings } from './contans';
 
 // 十六位十六进制数作为密钥
-const SECRET_KEY = CryptoJS.enc.Utf8.parse("3333e6e143439161");
+const SECRET_KEY = CryptoJS.enc.Utf8.parse('3333e6e143439161');
 // 十六位十六进制数作为密钥偏移量
-const SECRET_IV = CryptoJS.enc.Utf8.parse("e3bbe7e3ba84431a");
+const SECRET_IV = CryptoJS.enc.Utf8.parse('e3bbe7e3ba84431a');
 
 // 类型 window.localStorage,window.sessionStorage,
 const config: {
-  type: "localStorage" | "sessionStorage";
+  type: 'localStorage' | 'sessionStorage';
   prefix: string;
   expire: number;
   isEncrypt: boolean;
 } = {
-  type: "localStorage", // 本地存储类型 localStorage sessionStorage
-  prefix: Settings.title + "_0.0.1", // 名称前缀 建议：项目名 + 项目版本
+  type: 'localStorage', // 本地存储类型 localStorage sessionStorage
+  prefix: Settings.title + '_0.0.1', // 名称前缀 建议：项目名 + 项目版本
   expire: 0, //过期时间 单位：秒
-  isEncrypt: process.env.NODE_ENV !== "development", // 默认加密 为了调试方便, 开发过程中可以不加密
+  isEncrypt: process.env.NODE_ENV !== 'development', // 默认加密 为了调试方便, 开发过程中可以不加密
 };
 // 判断是否支持 Storage
 export const isSupStorage = () => {
   if (!window) {
-    throw new Error("当前环境非浏览器，无法消费全局window实例。");
+    throw new Error('当前环境非浏览器，无法消费全局window实例。');
   }
   if (!window.localStorage) {
-    throw new Error("当前环境非无法使用localStorage");
+    throw new Error('当前环境非无法使用localStorage');
   }
   if (!window.sessionStorage) {
-    throw new Error("当前环境非无法使用sessionStorage");
+    throw new Error('当前环境非无法使用sessionStorage');
   }
 
-  return typeof Storage !== "undefined";
+  return typeof Storage !== 'undefined';
 };
 
 // 设置 setStorage
-export const setStorage = (
-  key: string,
-  value: string | null | undefined,
-  expire = 0
-) => {
-  if (value === "" || value === null || value === undefined) {
+export const setStorage = (key: string, value: string | null | undefined, expire = 0) => {
+  if (value === '' || value === null || value === undefined) {
     value = null;
   }
 
-  if (isNaN(expire) || expire < 0) throw new Error("Expire must be a number");
+  if (isNaN(expire) || expire < 0) throw new Error('Expire must be a number');
 
   expire = (expire ? expire : config.expire) * 1000;
   const data = {
@@ -62,9 +58,7 @@ export const setStorage = (
     time: Date.now(), //存值时间戳
     expire: expire, // 过期时间
   };
-  const encryptString = config.isEncrypt
-    ? encrypt(JSON.stringify(data))
-    : JSON.stringify(data);
+  const encryptString = config.isEncrypt ? encrypt(JSON.stringify(data)) : JSON.stringify(data);
   window[config.type].setItem(autoAddPrefix(key), encryptString);
 };
 
@@ -75,7 +69,7 @@ export const getStorage = (key: string) => {
   // key 不存在判断
   if (
     !window[config.type].getItem(prefixKey) ||
-    JSON.stringify(window[config.type].getItem(prefixKey)) === "null"
+    JSON.stringify(window[config.type].getItem(prefixKey)) === 'null'
   ) {
     return null;
   }
@@ -141,18 +135,8 @@ export const getStorageAll = () => {
     const getKey = autoRemovePrefix(key);
     // 获取key对应的值
     const storage = config.isEncrypt
-      ? JSON.parse(
-          decrypt(
-            <string>(
-              window[config.type].getItem(typeof key === "string" ? key : "")
-            )
-          )
-        )
-      : JSON.parse(
-          <string>(
-            window[config.type].getItem(typeof key === "string" ? key : "")
-          )
-        );
+      ? JSON.parse(decrypt(<string>window[config.type].getItem(typeof key === 'string' ? key : '')))
+      : JSON.parse(<string>window[config.type].getItem(typeof key === 'string' ? key : ''));
 
     const nowTime = Date.now();
     if (storage.expire && nowTime - storage.time > storage.expire) {
@@ -182,11 +166,11 @@ export const clearStorage = () => {
 
 // 判断是否可用 JSON.parse
 export const isJson = (value: string) => {
-  if (Object.prototype.toString.call(value) === "[object String]") {
+  if (Object.prototype.toString.call(value) === '[object String]') {
     try {
       const obj = JSON.parse(value);
       const objType = Object.prototype.toString.call(obj);
-      return objType === "[object Object]" || objType === "[object Array]";
+      return objType === '[object Object]' || objType === '[object Array]';
     } catch (e) {
       // console.log('error：' + value + '!!!' + e);
       return false;
@@ -197,15 +181,13 @@ export const isJson = (value: string) => {
 
 // 名称前自动添加前缀
 const autoAddPrefix = (key: string) => {
-  const prefix = config.prefix ? config.prefix + "_" : "";
+  const prefix = config.prefix ? config.prefix + '_' : '';
   return prefix + key;
 };
 
 // 移除已添加的前缀
-const autoRemovePrefix = (key: {
-  substr: (arg: string | number | null) => string;
-}) => {
-  const len = config.prefix ? config.prefix.length + 1 : "";
+const autoRemovePrefix = (key: { substr: (arg: string | number | null) => string }) => {
+  const len = config.prefix ? config.prefix.length + 1 : '';
   return key.substr(len);
 };
 
@@ -215,11 +197,11 @@ const autoRemovePrefix = (key: {
  * @returns {string}
  */
 const encrypt = (data: string) => {
-  if (typeof data === "object") {
+  if (typeof data === 'object') {
     try {
       data = JSON.stringify(data);
     } catch (error) {
-      console.log("encrypt error:", error);
+      console.log('encrypt error:', error);
     }
   }
   const dataHex = CryptoJS.enc.Utf8.parse(data);

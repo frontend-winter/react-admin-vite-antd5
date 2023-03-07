@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   data: [],
@@ -7,7 +7,7 @@ const initialState = {
  * @description commonSlice
  */
 export const commonSlice = createSlice({
-  name: "common",
+  name: 'common',
   initialState: initialState,
   reducers: {
     setData: (state, action) => {

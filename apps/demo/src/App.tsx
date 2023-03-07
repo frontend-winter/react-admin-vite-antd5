@@ -1,9 +1,9 @@
-import { EllipsisOutlined, PlusOutlined } from "@ant-design/icons";
-import type { ActionType, ProColumns } from "@ant-design/pro-components";
-import { ProTable, TableDropdown } from "@ant-design/pro-components";
-import { Button, Dropdown, Space, Tag } from "antd";
-import { useRef } from "react";
-import request from "umi-request";
+import { EllipsisOutlined, PlusOutlined } from '@ant-design/icons';
+import type { ActionType, ProColumns } from '@ant-design/pro-components';
+import { ProTable, TableDropdown } from '@ant-design/pro-components';
+import { Button, Dropdown, Space, Tag } from 'antd';
+import { useRef } from 'react';
+import request from 'umi-request';
 
 type GithubIssueItem = {
   url: string;
@@ -23,54 +23,54 @@ type GithubIssueItem = {
 
 const columns: ProColumns<GithubIssueItem>[] = [
   {
-    dataIndex: "index",
-    valueType: "indexBorder",
+    dataIndex: 'index',
+    valueType: 'indexBorder',
     width: 48,
   },
   {
-    title: "标题",
-    dataIndex: "title",
+    title: '标题',
+    dataIndex: 'title',
     copyable: true,
     ellipsis: true,
-    tip: "标题过长会自动收缩",
+    tip: '标题过长会自动收缩',
     formItemProps: {
       rules: [
         {
           required: true,
-          message: "此项为必填项",
+          message: '此项为必填项',
         },
       ],
     },
   },
   {
     disable: true,
-    title: "状态",
-    dataIndex: "state",
+    title: '状态',
+    dataIndex: 'state',
     filters: true,
     onFilter: true,
     ellipsis: true,
-    valueType: "select",
+    valueType: 'select',
     valueEnum: {
-      all: { text: "超长".repeat(50) },
+      all: { text: '超长'.repeat(50) },
       open: {
-        text: "未解决",
-        status: "Error",
+        text: '未解决',
+        status: 'Error',
       },
       closed: {
-        text: "已解决",
-        status: "Success",
+        text: '已解决',
+        status: 'Success',
         disabled: true,
       },
       processing: {
-        text: "解决中",
-        status: "Processing",
+        text: '解决中',
+        status: 'Processing',
       },
     },
   },
   {
     disable: true,
-    title: "标签",
-    dataIndex: "labels",
+    title: '标签',
+    dataIndex: 'labels',
     search: false,
     renderFormItem: (_, { defaultRender }) => {
       return defaultRender(_);
@@ -86,17 +86,17 @@ const columns: ProColumns<GithubIssueItem>[] = [
     ),
   },
   {
-    title: "创建时间",
-    key: "showTime",
-    dataIndex: "created_at",
-    valueType: "date",
+    title: '创建时间',
+    key: 'showTime',
+    dataIndex: 'created_at',
+    valueType: 'date',
     sorter: true,
     hideInSearch: true,
   },
   {
-    title: "创建时间",
-    dataIndex: "created_at",
-    valueType: "dateRange",
+    title: '创建时间',
+    dataIndex: 'created_at',
+    valueType: 'dateRange',
     hideInTable: true,
     search: {
       transform: (value) => {
@@ -108,9 +108,9 @@ const columns: ProColumns<GithubIssueItem>[] = [
     },
   },
   {
-    title: "操作",
-    valueType: "option",
-    key: "option",
+    title: '操作',
+    valueType: 'option',
+    key: 'option',
     render: (text, record, _, action) => [
       <a
         key="editable"
@@ -127,8 +127,8 @@ const columns: ProColumns<GithubIssueItem>[] = [
         key="actionGroup"
         onSelect={() => action?.reload()}
         menus={[
-          { key: "copy", name: "复制" },
-          { key: "delete", name: "删除" },
+          { key: 'copy', name: '复制' },
+          { key: 'delete', name: '删除' },
         ]}
       />,
     ],
@@ -146,23 +146,23 @@ const App = () => {
         console.log(params, sort, filter);
         return request<{
           data: GithubIssueItem[];
-        }>("https://proapi.azurewebsites.net/github/issues", {
+        }>('https://proapi.azurewebsites.net/github/issues', {
           params,
         });
       }}
       editable={{
-        type: "multiple",
+        type: 'multiple',
       }}
       columnsState={{
-        persistenceKey: "pro-table-singe-demos",
-        persistenceType: "localStorage",
+        persistenceKey: 'pro-table-singe-demos',
+        persistenceType: 'localStorage',
         onChange(value) {
-          console.log("value: ", value);
+          console.log('value: ', value);
         },
       }}
       rowKey="id"
       search={{
-        labelWidth: "auto",
+        labelWidth: 'auto',
       }}
       options={{
         setting: {
@@ -172,7 +172,7 @@ const App = () => {
       form={{
         // 由于配置了 transform，提交的参与与定义的不同这里需要转化一下
         syncToUrl: (values, type) => {
-          if (type === "get") {
+          if (type === 'get') {
             return {
               ...values,
               created_at: [values.startTime, values.endTime],
@@ -196,16 +196,16 @@ const App = () => {
           menu={{
             items: [
               {
-                label: "1st item",
-                key: "1",
+                label: '1st item',
+                key: '1',
               },
               {
-                label: "2nd item",
-                key: "1",
+                label: '2nd item',
+                key: '1',
               },
               {
-                label: "3rd item",
-                key: "1",
+                label: '3rd item',
+                key: '1',
               },
             ],
           }}

@@ -1,14 +1,8 @@
-import { useEffect } from "react";
-import { Location, useLocation } from "react-router-dom";
-import { AuthContext, signIn, signOut } from "./context";
-import KeepAlive from "./KeepAlive";
-import {
-  AppDispatch,
-  RootState,
-  TypedUseSelectorHook,
-  useSelector,
-  useDispatch,
-} from "store";
+import { useEffect } from 'react';
+import { Location, useLocation } from 'react-router-dom';
+import { AuthContext, signIn, signOut } from './context';
+import KeepAlive from './KeepAlive';
+import { AppDispatch, RootState, TypedUseSelectorHook, useSelector, useDispatch } from 'store';
 
 const useLocationListen = (listener: (location: Location) => void) => {
   const location = useLocation();

@@ -1,14 +1,9 @@
-import {
-  Provider,
-  TypedUseSelectorHook,
-  useSelector,
-  useDispatch,
-} from "react-redux";
+import { Provider, TypedUseSelectorHook, useSelector, useDispatch } from 'react-redux';
 
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
-import common, { setData } from "./reducers/common";
-import user, { setMenu, setUserToken } from "./reducers/user";
+import common, { setData } from './reducers/common';
+import user, { setMenu, setUserToken } from './reducers/user';
 
 const store = configureStore({
   reducer: {
@@ -19,9 +14,9 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: {
         // Ignore these action types
-        ignoredActions: ["user/setMenu"],
+        ignoredActions: ['user/setMenu'],
         // Ignore these paths in the state
-        ignoredPaths: ["user"],
+        ignoredPaths: ['user'],
       },
     }),
 });

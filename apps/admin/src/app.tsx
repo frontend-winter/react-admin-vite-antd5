@@ -1,8 +1,8 @@
-import "./App.scss";
+import './App.scss';
 
-import { cloneDeep } from "lodash";
-import { useEffect } from "react";
-import { useRoutes } from "react-router-dom";
+import { cloneDeep } from 'lodash';
+import { useEffect } from 'react';
+import { useRoutes } from 'react-router-dom';
 
 import {
   AuthContext,
@@ -11,13 +11,13 @@ import {
   useAppDispatch,
   useAppSelector,
   useLocationListen,
-} from "hooks";
-import { MenuData } from "@/common/mock";
-import { ADMIN } from "utils";
-import { Settings } from "utils";
-import { setMenu } from "store";
+} from 'hooks';
+import { MenuData } from '@/common/mock';
+import { ADMIN } from 'utils';
+import { Settings } from 'utils';
+import { setMenu } from 'store';
 
-import { defaultRoutes, filepathToElement } from "./routes";
+import { defaultRoutes, filepathToElement } from './routes';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -25,13 +25,10 @@ function App() {
     user: { token, menu },
   } = useAppSelector((state) => state);
   const cloneDefaultRoutes = cloneDeep(defaultRoutes);
-  cloneDefaultRoutes[0].children = [
-    ...filepathToElement(menu),
-    ...cloneDefaultRoutes[0].children,
-  ];
+  cloneDefaultRoutes[0].children = [...filepathToElement(menu), ...cloneDefaultRoutes[0].children];
 
   useLocationListen((r) => {
-    document.title = `${Settings.title}: ${r.pathname.replace("/", "")}`;
+    document.title = `${Settings.title}: ${r.pathname.replace('/', '')}`;
   });
   const element = useRoutes(cloneDefaultRoutes);
   useEffect(() => {
@@ -46,11 +43,7 @@ function App() {
     }
   }, [token]);
 
-  return (
-    <AuthContext.Provider value={{ signIn, signOut }}>
-      {element}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ signIn, signOut }}>{element}</AuthContext.Provider>;
 }
 
 export default App;

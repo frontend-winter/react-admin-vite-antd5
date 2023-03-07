@@ -1,9 +1,9 @@
-import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
-import vitePluginCompression from "vite-plugin-compression";
-import { resolve } from "path";
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import vitePluginCompression from 'vite-plugin-compression';
+import { resolve } from 'path';
 
-const baseUrl = "react-admin-vite-antd5";
+const baseUrl = 'react-admin-vite-antd5';
 
 export default defineConfig((config) => {
   return {
@@ -16,35 +16,31 @@ export default defineConfig((config) => {
     ],
     resolve: {
       alias: {
-        "@": `${resolve(process.cwd(), "src")}`,
+        '@': `${resolve(process.cwd(), 'src')}`,
       },
     },
     server: {
       open: true,
       port: 5794,
       proxy: {
-        "/api": {
-          target: "http://localhost:8080",
+        '/api': {
+          target: 'http://localhost:8080',
           secure: false,
-          rewrite: (path) => path.replace(/^\/api/, ""),
+          rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
     },
-    base: config.mode === "development" ? "/" : `/${baseUrl}/`,
+    base: config.mode === 'development' ? '/' : `/${baseUrl}/`,
     build: {
       outDir: baseUrl,
       rollupOptions: {
         output: {
-          chunkFileNames: "js/[name]-[hash].js", // 引入文件名的名称
-          entryFileNames: "js/[name]-[hash].js", // 包的入口文件名称
-          assetFileNames: "[ext]/[name]-[hash].[ext]", // 资源文件像 字体，图片等
+          chunkFileNames: 'js/[name]-[hash].js', // 引入文件名的名称
+          entryFileNames: 'js/[name]-[hash].js', // 包的入口文件名称
+          assetFileNames: '[ext]/[name]-[hash].[ext]', // 资源文件像 字体，图片等
           manualChunks(id) {
-            if (id.includes("node_modules")) {
-              return id
-                .toString()
-                .split("node_modules/")[1]
-                .split("/")[0]
-                .toString();
+            if (id.includes('node_modules')) {
+              return id.toString().split('node_modules/')[1].split('/')[0].toString();
             }
           },
         },

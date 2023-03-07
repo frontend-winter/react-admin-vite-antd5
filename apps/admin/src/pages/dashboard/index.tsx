@@ -1,11 +1,11 @@
-import { PageContainer } from "@ant-design/pro-layout";
-import { Avatar, Col, Row, Statistic } from "antd";
-import type { FC } from "react";
+import { PageContainer } from '@ant-design/pro-layout';
+import { Avatar, Col, Row, Statistic } from 'antd';
+import type { FC } from 'react';
 
-import { currentTimeRange } from "utils";
-import { Text } from "components";
+import { currentTimeRange } from 'utils';
+import { Text } from 'components';
 
-import styles from "./style.module.scss";
+import styles from './style.module.scss';
 
 const PageHeaderContent: FC<{ currentUser: any }> = ({ currentUser }) => {
   return (
@@ -46,17 +46,16 @@ const Workplace: FC = () => {
       // waterMarkProps={{ content: username }}
       // style={{ background: "#fff" }}
       content={
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <PageHeaderContent
             currentUser={{
-              avatar:
-                "https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png",
-              name: "吴彦祖",
-              userid: "00000001",
-              email: "antdesign@alipay.com",
-              signature: "海纳百川，有容乃大",
-              title: "交互专家",
-              group: "某某某事业群－某某平台部－某某技术部－UED",
+              avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+              name: '吴彦祖',
+              userid: '00000001',
+              email: 'antdesign@alipay.com',
+              signature: '海纳百川，有容乃大',
+              title: '交互专家',
+              group: '某某某事业群－某某平台部－某某技术部－UED',
             }}
           />
           <ExtraContent />

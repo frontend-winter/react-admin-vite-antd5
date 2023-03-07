@@ -1,12 +1,12 @@
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Avatar, Button, Checkbox, Form, Input } from "antd";
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Button, Checkbox, Form, Input } from 'antd';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { AuthContext, useAppDispatch } from "hooks";
-import { Settings } from "utils";
+import { AuthContext, useAppDispatch } from 'hooks';
+import { Settings } from 'utils';
 
-import styles from "./index.module.scss";
+import styles from './index.module.scss';
 
 const Login: React.FC = () => {
   const { signIn } = useContext(AuthContext);
@@ -18,7 +18,7 @@ const Login: React.FC = () => {
       setLoading(true);
       const token = JSON.stringify(values);
       await signIn(dispatch, token);
-      navigator("/");
+      navigator('/');
     } finally {
       setLoading(false);
     }
@@ -40,23 +40,15 @@ const Login: React.FC = () => {
       >
         <Form.Item
           name="username"
-          rules={[{ required: true, message: "Please input your Username!" }]}
+          rules={[{ required: true, message: 'Please input your Username!' }]}
         >
-          <Input
-            allowClear
-            prefix={<UserOutlined />}
-            placeholder="admin or user"
-          />
+          <Input allowClear prefix={<UserOutlined />} placeholder="admin or user" />
         </Form.Item>
         <Form.Item
           name="password"
-          rules={[{ required: true, message: "Please input your Password!" }]}
+          rules={[{ required: true, message: 'Please input your Password!' }]}
         >
-          <Input.Password
-            prefix={<LockOutlined />}
-            type="password"
-            placeholder="any password"
-          />
+          <Input.Password prefix={<LockOutlined />} type="password" placeholder="any password" />
         </Form.Item>
         <Form.Item>
           <Form.Item noStyle name="remember" valuePropName="checked">
@@ -78,7 +70,7 @@ const Login: React.FC = () => {
           >
             Log in
           </Button>
-          Or{" "}
+          Or{' '}
           <a
             onClick={() => {
               form.resetFields();

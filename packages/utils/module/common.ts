@@ -20,11 +20,11 @@ const sleep = (time: number | undefined) =>
     }, time);
   });
 
-const timeList = ["早上好", "上午好", "中午好", "下午好", "晚上好"];
+const timeList = ['早上好', '上午好', '中午好', '下午好', '晚上好'];
 const currentTimeRange = () => {
   const now = new Date();
   const hours = now.getHours();
-  let text = "";
+  let text = '';
   // 判断当前时间段
   if (hours >= 0 && hours < 9) {
     text = timeList[0];
@@ -42,14 +42,7 @@ const currentTimeRange = () => {
 
 const isMobile = () => {
   const userAgentInfo = navigator.userAgent;
-  const mobileAgents = [
-    "Android",
-    "iPhone",
-    "SymbianOS",
-    "Windows Phone",
-    "iPad",
-    "iPod",
-  ];
+  const mobileAgents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'];
   let mobile_flag = false;
   //根据userAgent判断是否是手机
   for (let v = 0; v < mobileAgents.length; v++) {
@@ -74,7 +67,7 @@ export const treeRouter = (list: MenuItem[]) => {
       name: item.label,
       icon: item.icon,
       routes:
-        "children" in item
+        'children' in item
           ? item.children!.map(({ children, icon, label, path }) => {
               return {
                 path: path,
@@ -91,14 +84,14 @@ export const treeRouter = (list: MenuItem[]) => {
 const getOperatingSystem = () => {
   const agent = navigator.userAgent.toLowerCase();
   const isMac = /macintosh|mac os x/i.test(navigator.userAgent);
-  if (agent.indexOf("win32") >= 0 || agent.indexOf("wow32") >= 0) {
-    return "win32";
+  if (agent.indexOf('win32') >= 0 || agent.indexOf('wow32') >= 0) {
+    return 'win32';
   }
-  if (agent.indexOf("win64") >= 0 || agent.indexOf("wow64") >= 0) {
-    return "win32";
+  if (agent.indexOf('win64') >= 0 || agent.indexOf('wow64') >= 0) {
+    return 'win32';
   }
   if (isMac) {
-    return "mac";
+    return 'mac';
   }
 };
 
