@@ -210,7 +210,7 @@ This project is licensed under the MIT License. .
 
 ## 进行中或者计划中的
 
-- 添加 API 子 packages
+- 添加 API 子 packages （已完成）
 - Feature 国际化支持 i18
 - 微前端集成
 - ...
