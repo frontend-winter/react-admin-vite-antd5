@@ -32,7 +32,7 @@ export default defineConfig((config) => {
     },
     base: config.mode === 'development' ? '/' : `/${baseUrl}/`,
     build: {
-      outDir: baseUrl,
+      outDir: `../../${baseUrl}`,
       rollupOptions: {
         output: {
           chunkFileNames: 'js/[name]-[hash].js', // 引入文件名的名称
