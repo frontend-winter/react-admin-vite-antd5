@@ -8,7 +8,7 @@
 
 #演示
 
-- https://hzdjs.cn/react-admin-vite-antd5
+- https://aisean.cn/react-admin-vite-antd5
 - 账户 admin/user， 密码 任意密码
 - 登录
   ![img_1.png](img_1.png)
