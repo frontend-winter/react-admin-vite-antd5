@@ -93,8 +93,8 @@ export default () => {
             {
               icon: Settings.logo,
               title: 'Blog',
-              desc: 'hzdjs.cn',
-              url: 'https://hzdjs.cn',
+              desc: 'aisean.cn',
+              url: 'https://aisean.cn',
             },
           ]}
           avatarProps={{
